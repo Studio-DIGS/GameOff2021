@@ -1,8 +1,8 @@
 extends KinematicBody2D
 
-export var SPEED = 500.0
+export var SPEED = 600.0
 export var ACCELERATION = 20.0
-export var AIR_ACCELERATION = 7.5
+export var AIR_ACCELERATION = 5.0
 export var JUMP_HEIGHT = 200.0
 export var JUMP_PEAK = 0.5 # time to peak of jump
 export var JUMP_DESCENT = 0.4 # time to descend
@@ -74,8 +74,11 @@ func get_gravity():
 
 func get_wall():
 	var wall_state = 0
-	if ray_right.is_colliding():
+	if ray_right.is_colliding() && ray_left.is_colliding():
+		wall_state = get_input()
+	elif ray_right.is_colliding():
 		wall_state = 1
 	elif ray_left.is_colliding():
 		wall_state = -1
+	
 	return wall_state
