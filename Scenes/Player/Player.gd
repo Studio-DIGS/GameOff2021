@@ -15,7 +15,9 @@ onready var fall_gravity = ((-2.0 * JUMP_HEIGHT) / (JUMP_DESCENT * JUMP_DESCENT)
 
 onready var ray_right = $Raycasts/right
 onready var ray_left = $Raycasts/left
-onready var web = $Raycasts/web
+onready var web = $Cursor/Area2D
+onready var cursor = $Cursor
+
 
 enum {
 	MOVE,
@@ -30,7 +32,8 @@ var target = self
 var shoot_vector = Vector2.ZERO
 
 func _physics_process(delta):
-	web.set_cast_to(get_local_mouse_position())
+	#web.set_cast_to(get_local_mouse_position())
+	cursor.global_position = get_global_mouse_position()
 	
 	match state:
 		MOVE:
@@ -68,10 +71,10 @@ func move(delta):
 		velocity.y = lerp(velocity.y, 0, ACCELERATION * delta)
 	
 	if Input.is_action_just_pressed("shoot_web"):
-		if web.is_colliding():
-			target = web.get_collider()
+		if web.get_overlapping_areas() != []:
+			target = web.get_overlapping_areas()[0]
+			#print(str(target))
 			shoot_vector = (target.global_position - global_position)
-			print(str(target))
 			state = GRAPPLE
 	
 
@@ -91,6 +94,8 @@ func grapple():
 	var distance = target.global_position - global_position
 	if distance.length() < 60:
 		state = MOVE  
+	if Input.is_action_just_pressed("jump"):
+		state = MOVE
 		
 
 func get_gravity():
