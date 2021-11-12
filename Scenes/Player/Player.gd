@@ -26,6 +26,9 @@ enum {
 var state = MOVE
 var velocity = Vector2.ZERO
 
+var target = self
+var shoot_vector = Vector2.ZERO
+
 func _physics_process(delta):
 	web.set_cast_to(get_local_mouse_position())
 	
@@ -65,7 +68,11 @@ func move(delta):
 		velocity.y = lerp(velocity.y, 0, ACCELERATION * delta)
 	
 	if Input.is_action_just_pressed("shoot_web"):
-		state = GRAPPLE
+		if web.is_colliding():
+			target = web.get_collider()
+			shoot_vector = (target.global_position - global_position)
+			print(str(target))
+			state = GRAPPLE
 	
 
 func get_input():
@@ -80,28 +87,11 @@ func jump():
 	velocity.y = jump_velocity
 
 func grapple():
-	if web.is_colliding():
-		var target = web.get_collider()
-		var shoot_vector = (target.global_position - global_position)
-		velocity = SHOOT_SPEED * shoot_vector.normalized()
-		if shoot_vector.length() < 30:
-			state = MOVE  
+	velocity = SHOOT_SPEED * shoot_vector.normalized()
+	var distance = target.global_position - global_position
+	if distance.length() < 60:
+		state = MOVE  
 		
-	else:
-		state = MOVE
-
-## WEB SWINGING FUNCTION
-#func web_grapple():
-#	web.set_cast_to(get_local_mouse_position())
-#	if Input.is_action_just_pressed("shoot_web"):
-#		if web.is_colliding():
-#			print("yes")
-#			var target = web.get_collision_point()
-#			var shoot_vector = (target - global_position).normalized()
-#			var distance = global_position.distance_to(target)
-#
-#			velocity = distance * shoot_vector * SHOOT_SPEED
-#
 
 func get_gravity():
 	return jump_gravity if velocity.y < 0.0 else fall_gravity
