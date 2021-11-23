@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=2]
@@ -8,8 +8,15 @@ extents = Vector2( 29.5121, 29.0627 )
 
 [sub_resource type="CircleShape2D" id=2]
 
+[sub_resource type="CircleShape2D" id=3]
+radius = 710.048
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 31.1653, 30.3376 )
+
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 2
+collision_mask = 5
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -31,18 +38,36 @@ cast_to = Vector2( 40, 0 )
 enabled = true
 cast_to = Vector2( -40, 0 )
 
-[node name="web" type="RayCast2D" parent="Raycasts"]
+[node name="webcast" type="RayCast2D" parent="Raycasts"]
 enabled = true
-cast_to = Vector2( 100, 0 )
 collision_mask = 4
 collide_with_areas = true
 
 [node name="Cursor" type="Node2D" parent="."]
 
-[node name="Area2D" type="Area2D" parent="Cursor"]
+[node name="CursorArea" type="Area2D" parent="Cursor"]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor/CursorArea"]
 scale = Vector2( 0.1, 0.1 )
 shape = SubResource( 2 )
+
+[node name="WebshotRadius" type="Area2D" parent="."]
+visible = false
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WebshotRadius"]
+shape = SubResource( 3 )
+
+[node name="CancelGrapple" type="Area2D" parent="."]
+visible = false
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CancelGrapple"]
+shape = SubResource( 4 )
+
+[connection signal="area_entered" from="Cursor/CursorArea" to="." method="_on_CursorArea_area_entered"]
+[connection signal="area_exited" from="Cursor/CursorArea" to="." method="_on_CursorArea_area_exited"]
+[connection signal="body_entered" from="CancelGrapple" to="." method="_on_CancelGrapple_body_entered"]

@@ -1,52 +1,81 @@
 extends KinematicBody2D
 
+# player movement constants
 export var SPEED = 600.0
 export var ACCELERATION = 20.0
 export var TERMINAL_VELOCITY = 1000.0
-export var AIR_ACCELERATION = 5.0
-export var JUMP_HEIGHT = 200.0
+export var AIR_ACCELERATION = 1.75
+# jump constants
+export var JUMP_HEIGHT = 250.0
 export var JUMP_PEAK = 0.5 # time to peak of jump
 export var JUMP_DESCENT = 0.4 # time to descend
-export var SHOOT_SPEED = 1000.0
+# grapple mechanic constants
+export var GRAPPLE_SPEED = 1500.0 #speed player moves toward grapple point
+export var WEBSHOT_SPEED = 1800.0 #speed webshot shoots toward grapple points
 
+# jump calculations
 onready var jump_velocity = ((2.0 * JUMP_HEIGHT) / JUMP_PEAK) * -1.0
 onready var jump_gravity = ((-2.0 * JUMP_HEIGHT) / (JUMP_PEAK * JUMP_PEAK)) * -1.0
 onready var fall_gravity = ((-2.0 * JUMP_HEIGHT) / (JUMP_DESCENT * JUMP_DESCENT)) * -1.0
 
+# import nodes
 onready var ray_right = $Raycasts/right
 onready var ray_left = $Raycasts/left
-onready var web = $Cursor/Area2D
 onready var cursor = $Cursor
+onready var cursor_area = $Cursor/CursorArea
+onready var webcast = $Raycasts/webcast
+
+var webshot = preload("res://Scenes/Player/Webshot.tscn")
 
 
 enum {
 	MOVE,
-	GRAPPLE,
-	DASH
+	GRAPPLE
 }
 
 var state = MOVE
 var velocity = Vector2.ZERO
 
-var target = self
-var shoot_vector = Vector2.ZERO
+# webshooting variables
+var lockon = null
+var prev_lockon = null
+var target = Vector2.ZERO
+var aim = Vector2.ZERO
+var webshot_instance = null
+var active_shot = false
+
+
 
 func _physics_process(delta):
-	#web.set_cast_to(get_local_mouse_position())
-	cursor.global_position = get_global_mouse_position()
+	cursor.position = get_local_mouse_position()
+	
+	if active_shot:
+		if is_instance_valid(webshot_instance):
+			if webshot_instance.hit:
+				target = webshot_instance.target
+				state = GRAPPLE
+				webshot_instance.queue_free()
+		else:
+			active_shot = false
 	
 	match state:
 		MOVE:
 			move(delta)
 		GRAPPLE:
 			grapple()
-		DASH:
-			pass
 	
 	velocity = move_and_slide(velocity, Vector2.UP)
+	update()
 
 # MOVE STATE
 func move(delta):
+	target = Vector2.ZERO
+	
+	if lockon:
+		aim = lockon.global_position - global_position
+	else:
+		aim = cursor.position
+	
 	var grounded = is_on_floor()
 	var walled = get_wall()
 	var input = get_input()
@@ -58,7 +87,7 @@ func move(delta):
 		if Input.is_action_just_pressed("jump"):
 			jump()
 	
-	else: # less control in the air
+	else: # less control in the air (this is bad, FIX THIS)
 		velocity.x = lerp(velocity.x, input * SPEED, AIR_ACCELERATION * delta)
 	
 	if walled != 0:
@@ -70,12 +99,8 @@ func move(delta):
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y = lerp(velocity.y, 0, ACCELERATION * delta)
 	
-	if Input.is_action_just_pressed("shoot_web"):
-		if web.get_overlapping_areas() != []:
-			target = web.get_overlapping_areas()[0]
-			#print(str(target))
-			shoot_vector = (target.global_position - global_position)
-			state = GRAPPLE
+	if Input.is_action_just_pressed("shoot_web") and active_shot == false:
+		shoot()
 	
 
 func get_input():
@@ -89,12 +114,21 @@ func get_input():
 func jump():
 	velocity.y = jump_velocity
 
+func shoot():
+	active_shot = true
+	webshot_instance = webshot.instance()
+	webshot_instance.position = get_global_position()
+	webshot_instance.apply_impulse(Vector2.ZERO, aim.normalized() * WEBSHOT_SPEED)
+	get_parent().add_child(webshot_instance)
+	
+# GRAPPLE STATE
 func grapple():
-	velocity = SHOOT_SPEED * shoot_vector.normalized()
-	var distance = target.global_position - global_position
-	if distance.length() < 60:
-		state = MOVE  
-	if Input.is_action_just_pressed("jump"):
+	var trajectory = target.global_position - global_position
+	velocity = GRAPPLE_SPEED * trajectory.normalized()
+	if trajectory.length() < 40:
+		velocity = SPEED * 2 * trajectory.normalized()
+		state = MOVE
+	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("shoot_web"):
 		state = MOVE
 		
 
@@ -111,3 +145,25 @@ func get_wall():
 		wall_state = -1
 	
 	return wall_state
+
+
+func _draw():
+	draw_line(Vector2(), aim, Color(0,1,0))
+
+
+
+
+func _on_CursorArea_area_entered(area):
+	prev_lockon = lockon
+	lockon = area
+
+
+func _on_CursorArea_area_exited(area):
+	if area == lockon:
+		lockon = prev_lockon
+	prev_lockon = null
+
+
+func _on_CancelGrapple_body_entered(body):
+	if state == GRAPPLE:
+		state = MOVE

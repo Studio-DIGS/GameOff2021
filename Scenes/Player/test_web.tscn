@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Player/test_web.gd" type="Script" id=1]
+[ext_resource path="res://SpaceInvader.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Player/Line2D.gd" type="Script" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.23171
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array(  )
+}
+
+[node name="test_web" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+visible = false
+scale = Vector2( 0.104, 0.068 )
+texture = ExtResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.486, 0.468 )
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 1.0
+script = ExtResource( 3 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Line2D"]
+position = Vector2( 216.238, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Line2D/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource( 2 )

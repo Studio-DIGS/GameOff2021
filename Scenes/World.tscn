@@ -45,19 +45,19 @@ tile_data = PoolIntArray( -458756, 0, 0, -458755, 0, 0, -458754, 0, 0, -458753, 
 position = Vector2( 378.792, 261.865 )
 
 [node name="Grapple Point2" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1241.23, -98.7702 )
+position = Vector2( 1233.93, -76.8647 )
 
 [node name="Grapple Point3" parent="." instance=ExtResource( 3 )]
-position = Vector2( 902.571, 61.1779 )
+position = Vector2( 959.942, 93.5146 )
 
 [node name="Grapple Point6" parent="." instance=ExtResource( 3 )]
-position = Vector2( 619.923, -138.69 )
+position = Vector2( 751.356, -293.072 )
 
 [node name="Grapple Point4" parent="." instance=ExtResource( 3 )]
-position = Vector2( 302.506, -305.052 )
+position = Vector2( 361.964, -436.485 )
 
 [node name="Grapple Point5" parent="." instance=ExtResource( 3 )]
 position = Vector2( 110.668, -119.232 )
 
 [node name="EnemyType1" parent="." instance=ExtResource( 4 )]
-position = Vector2( 477, 110 )
+position = Vector2( 1826.8, -66.287 )

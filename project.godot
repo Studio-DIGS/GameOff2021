@@ -57,9 +57,11 @@ dash={
 
 2d_physics/layer_1="Environment (World)"
 2d_physics/layer_2="Player"
-2d_physics/layer_3="Grapple Points"
-2d_physics/layer_4="Enemy"
-2d_physics/layer_5="Enemy Projectile"
+2d_physics/layer_3="Lockon Areas"
+2d_physics/layer_4="Grapple Points"
+2d_physics/layer_5="Webshots"
+2d_physics/layer_6="Enemy"
+2d_physics/layer_7="Enemy Projectiles"
 
 [physics]
 

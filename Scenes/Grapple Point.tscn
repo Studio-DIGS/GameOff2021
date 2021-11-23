@@ -1,16 +1,27 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/black_circle.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/1200px-Red_circle.svg.png" type="Texture" id=2]
 [ext_resource path="res://Scenes/Grapple Point.gd" type="Script" id=3]
 
+[sub_resource type="CircleShape2D" id=2]
+radius = 14.9463
+
 [sub_resource type="CircleShape2D" id=1]
 
-[node name="Grapple Point" type="Node2D"]
+[node name="Grapple Point" type="RigidBody2D"]
+collision_layer = 8
+collision_mask = 16
+gravity_scale = 0.0
+contacts_reported = 1
+contact_monitor = true
 script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="PointBody" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.025, 0.025 )
@@ -21,14 +32,13 @@ visible = false
 scale = Vector2( 0.03, 0.03 )
 texture = ExtResource( 2 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="GrappleArea" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 4
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrappleArea"]
 scale = Vector2( 20, 20 )
 shape = SubResource( 1 )
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
-[connection signal="area_exited" from="Area2D" to="." method="_on_Area2D_area_exited"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="area_entered" from="GrappleArea" to="." method="_on_Area2D_area_entered"]
+[connection signal="area_exited" from="GrappleArea" to="." method="_on_Area2D_area_exited"]
