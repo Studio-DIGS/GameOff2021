@@ -1,0 +1,62 @@
+extends Node2D
+
+var tip = Vector2.ZERO
+onready var tween = $Tween
+
+
+export var MAX_AMP = 100
+export var MAX_FREQ = 0.3
+export var k = 0.01
+export var SPEED = 5
+
+var pos = Vector2.ZERO
+var pos2 = Vector2.ZERO
+var amp_t = 0
+var amp = 0
+var freq = 0
+
+
+func _process(delta):
+#	tip = get_global_mouse_position()
+#	if Input.is_action_just_pressed("shoot_web"):
+#		amp = MAX_AMP
+#		freq = MAX_FREQ
+	#oscillate(amp_t, -amp, amp, delta)
+	amp_t = clamp(amp_t + SPEED * amp * delta, -amp, amp)
+	if amp_t == amp or amp_t == -amp:
+		SPEED = -1 * SPEED
+	
+	amp = lerp(amp, 5, delta)
+	freq = lerp(freq, 0, 10 * delta)
+	#if Input.is_action_just_pressed("shoot_web"):
+		#tween.interpolate_property(self, "amp_t", -amp, amp, 1, Tween.TRANS_ELASTIC)
+		#tween.start()
+	update()
+	
+
+func _draw():
+	for i in range(10000):
+		pos = Vector2(i, sine(i))
+		pos2 = Vector2(i+1, sine(i+1))
+		draw_line(pos, pos2, ColorN("white"), 2)
+		if pos2.x > tip.x:
+			break
+		
+	
+			
+
+func oscillate(value, min_val, max_val, delta):
+	value = clamp(value + SPEED * delta, min_val, max_val)
+	if value == max_val or value == min_val:
+		SPEED = -1 * SPEED
+	return value
+	
+
+func sine(t):
+	var y = amp_t * exp(-k * t) * sin(freq * t)
+	return y
+
+
+func _on_Player_shoot_web():
+	amp = MAX_AMP
+	freq = MAX_FREQ

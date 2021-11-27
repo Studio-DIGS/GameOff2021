@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Player/WebAnimation.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 29.5121, 29.0627 )
@@ -68,6 +69,9 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CancelGrapple"]
 shape = SubResource( 4 )
 
+[node name="WebAnimation" parent="." instance=ExtResource( 3 )]
+
+[connection signal="shoot_web" from="." to="WebAnimation" method="_on_Player_shoot_web"]
 [connection signal="area_entered" from="Cursor/CursorArea" to="." method="_on_CursorArea_area_entered"]
 [connection signal="area_exited" from="Cursor/CursorArea" to="." method="_on_CursorArea_area_exited"]
 [connection signal="body_entered" from="CancelGrapple" to="." method="_on_CancelGrapple_body_entered"]
