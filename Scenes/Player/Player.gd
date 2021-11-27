@@ -98,7 +98,7 @@ func move(delta):
 			velocity.x = walled * SPEED * -1.5
 			jump()
 	
-	else: # less control in the air
+	else: # less control in the air (! QUESTIONABLE PHYSICS !)
 		velocity.x = lerp(velocity.x, input * SPEED, AIR_ACCELERATION * delta)
 	
 
@@ -143,6 +143,7 @@ func grapple():
 		web.tip = Vector2.ZERO
 		state = MOVE
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("shoot_web"):
+		web.tip = Vector2.ZERO
 		state = MOVE
 		
 
@@ -181,4 +182,5 @@ func _on_CursorArea_area_exited(area):
 
 func _on_CancelGrapple_body_entered(body):
 	if state == GRAPPLE:
+		web.tip = Vector2.ZERO
 		state = MOVE
