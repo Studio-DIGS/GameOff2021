@@ -10,7 +10,6 @@ func _on_Webshot_body_entered(body):
 
 # webshot goes out of range
 func _on_Hitbox_area_exited(area):
-	print("aree exit")
 	queue_free()
 
 # webshot successfully hits target

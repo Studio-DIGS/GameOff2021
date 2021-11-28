@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # player movement constants
-export var SPEED = 600.0
+export var SPEED = 700.0
 export var ACCELERATION = 20.0
 export var TERMINAL_VELOCITY = 1000.0
 export var AIR_ACCELERATION = 1.75
@@ -25,10 +25,6 @@ onready var cursor = $Cursor
 onready var cursor_area = $Cursor/CursorArea
 onready var web = $WebAnimation
 
-var webshot = preload("res://Scenes/Player/Webshot.tscn")
-signal shoot_web()
-
-
 enum {
 	MOVE,
 	GRAPPLE
@@ -44,6 +40,8 @@ var target = Vector2.ZERO
 var aim = Vector2.ZERO
 var webshot_instance = null
 var active_shot = false
+var webshot = preload("res://Scenes/Player/Webshot.tscn")
+signal shoot_web()
 
 
 
