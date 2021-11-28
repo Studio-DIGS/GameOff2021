@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 # player movement constants
-export var SPEED = 600.0
+export var SPEED = 700.0
 export var ACCELERATION = 20.0
 export var TERMINAL_VELOCITY = 1000.0
 export var AIR_ACCELERATION = 1.75
@@ -23,10 +23,7 @@ onready var ray_right = $Raycasts/right
 onready var ray_left = $Raycasts/left
 onready var cursor = $Cursor
 onready var cursor_area = $Cursor/CursorArea
-onready var webcast = $Raycasts/webcast
-
-var webshot = preload("res://Scenes/Player/Webshot.tscn")
-
+onready var web = $WebAnimation
 
 enum {
 	MOVE,
@@ -43,6 +40,8 @@ var target = Vector2.ZERO
 var aim = Vector2.ZERO
 var webshot_instance = null
 var active_shot = false
+var webshot = preload("res://Scenes/Player/Webshot.tscn")
+signal shoot_web()
 
 
 
@@ -51,12 +50,16 @@ func _physics_process(delta):
 	
 	if active_shot:
 		if is_instance_valid(webshot_instance):
+			web.look_at(webshot_instance.position)
+			var distance = (webshot_instance.global_position - global_position).length()
+			web.tip = Vector2(distance, 0)
 			if webshot_instance.hit:
 				target = webshot_instance.target
 				state = GRAPPLE
 				webshot_instance.queue_free()
 		else:
 			active_shot = false
+			web.tip = Vector2.ZERO
 	
 	match state:
 		MOVE:
@@ -86,15 +89,17 @@ func move(delta):
 		velocity.x = lerp(velocity.x, input * SPEED, ACCELERATION * delta)
 		if Input.is_action_just_pressed("jump"):
 			jump()
-	
-	else: # less control in the air (this is bad, FIX THIS)
-		velocity.x = lerp(velocity.x, input * SPEED, AIR_ACCELERATION * delta)
-	
-	if walled != 0:
+			
+	elif walled != 0:
 		velocity.y *= 0.8
 		if Input.is_action_just_pressed("jump"):
-			velocity.x = walled * SPEED * -1
+			velocity.x = walled * SPEED * -1.5
 			jump()
+	
+	else: # less control in the air (! QUESTIONABLE PHYSICS !)
+		velocity.x = lerp(velocity.x, input * SPEED, AIR_ACCELERATION * delta)
+	
+
 	
 	if Input.is_action_just_released("jump") and velocity.y < 0:
 		velocity.y = lerp(velocity.y, 0, ACCELERATION * delta)
@@ -115,20 +120,28 @@ func jump():
 	velocity.y = jump_velocity
 
 func shoot():
+	emit_signal("shoot_web")
+	
+	web.freq = 0.2
 	active_shot = true
 	webshot_instance = webshot.instance()
 	webshot_instance.position = get_global_position()
 	webshot_instance.apply_impulse(Vector2.ZERO, aim.normalized() * WEBSHOT_SPEED)
 	get_parent().add_child(webshot_instance)
 	
+	
+	
 # GRAPPLE STATE
 func grapple():
 	var trajectory = target.global_position - global_position
+	web.tip = Vector2(trajectory.length(), 0)
 	velocity = GRAPPLE_SPEED * trajectory.normalized()
 	if trajectory.length() < 40:
 		velocity = SPEED * 2 * trajectory.normalized()
+		web.tip = Vector2.ZERO
 		state = MOVE
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("shoot_web"):
+		web.tip = Vector2.ZERO
 		state = MOVE
 		
 
@@ -148,7 +161,8 @@ func get_wall():
 
 
 func _draw():
-	draw_line(Vector2(), aim, Color(0,1,0))
+	#draw_line(Vector2(), aim, Color(0,1,0))
+	pass
 
 
 
@@ -166,4 +180,5 @@ func _on_CursorArea_area_exited(area):
 
 func _on_CancelGrapple_body_entered(body):
 	if state == GRAPPLE:
+		web.tip = Vector2.ZERO
 		state = MOVE
