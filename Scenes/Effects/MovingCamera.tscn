@@ -11,4 +11,7 @@ script = ExtResource( 1 )
 [node name="TriggerZone" parent="." instance=ExtResource( 2 )]
 position = Vector2( -1024, 1024 )
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="TriggerZone" to="." method="_on_TriggerZone_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -7,4 +7,3 @@ script = ExtResource( 2 )
 MAX_FREQ = 0.1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-current = true
