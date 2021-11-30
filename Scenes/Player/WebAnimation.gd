@@ -11,6 +11,7 @@ export var FREQ_SPEED = 7
 
 var pos = Vector2.ZERO
 var pos2 = Vector2.ZERO
+var width = 3.5
 var amp_t = 0
 var amp = 0
 var freq = 0
@@ -35,8 +36,10 @@ func _draw():
 	for i in range(10000):
 		pos = Vector2(i, sine(i))
 		pos2 = Vector2(i+1, sine(i+1))
-		draw_line(pos, pos2, ColorN("white"), 3)
+		draw_line(pos, pos2, ColorN("white"), width)
 		if pos2.x > tip.x:
+			print(str(i) + " " + str(width))
+			draw_circle(pos2, width, ColorN("white"))
 			break
 		
 

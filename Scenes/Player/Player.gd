@@ -23,7 +23,9 @@ onready var ray_right = $Raycasts/right
 onready var ray_left = $Raycasts/left
 onready var cursor = $Cursor
 onready var cursor_area = $Cursor/CursorArea
+onready var sprite = $Sprite
 onready var web = $WebAnimation
+onready var animationState = $AnimationTree.get("parameters/playback")
 
 enum {
 	MOVE,
@@ -82,11 +84,18 @@ func move(delta):
 	var grounded = is_on_floor()
 	var walled = get_wall()
 	var input = get_input()
+	if input > 0:
+		sprite.flip_h = true
+	elif input < 0:
+		sprite.flip_h = false
 	
 	velocity.y += clamp(get_gravity() * delta, 0, TERMINAL_VELOCITY)
 	
 	if grounded == true:
+		animationState.travel("Idle")
 		velocity.x = lerp(velocity.x, input * SPEED, ACCELERATION * delta)
+		if input != 0:
+			animationState.travel("Run")
 		if Input.is_action_just_pressed("jump"):
 			jump()
 			
@@ -97,6 +106,7 @@ func move(delta):
 			jump()
 	
 	else: # less control in the air (! QUESTIONABLE PHYSICS !)
+		animationState.travel("Fall")
 		velocity.x = lerp(velocity.x, input * SPEED, AIR_ACCELERATION * delta)
 	
 
@@ -117,6 +127,7 @@ func get_input():
 	return horizontal
 
 func jump():
+	animationState.travel("Jump")
 	velocity.y = jump_velocity
 
 func shoot():
