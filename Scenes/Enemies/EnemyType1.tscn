@@ -32,10 +32,11 @@ shape = SubResource( 2 )
 
 [node name="RayCastWall" type="RayCast2D" parent="rays"]
 enabled = true
-cast_to = Vector2( 0, 150 )
+cast_to = Vector2( 0, 100 )
 collide_with_areas = true
 
 [node name="RayCast2D" type="RayCast2D" parent="rays"]
+cast_to = Vector2( 0, 200 )
 collision_mask = 32
 
 [editable path="PlayerDetection"]

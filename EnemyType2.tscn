@@ -34,6 +34,7 @@ enabled = true
 cast_to = Vector2( 50, 0 )
 
 [node name="Timer" type="Timer" parent="AimRay"]
+one_shot = true
 
 [connection signal="area_entered" from="PlayerDetection" to="PlayerDetection" method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="PlayerDetection" to="PlayerDetection" method="_on_Area2D_area_exited"]
