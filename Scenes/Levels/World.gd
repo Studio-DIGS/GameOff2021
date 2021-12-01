@@ -17,6 +17,7 @@ onready var HardPool = [
 	preload("res://Scenes/Levels/Hard/Hard1.tscn"),
 	preload("res://Scenes/Levels/Hard/Hard2.tscn")
 ]
+onready var doorClose = preload("res://Scenes/Levels/DoorClose.tscn")
 
 #Constants
 const HEIGHT_OF_MODULE = 3072
@@ -35,7 +36,7 @@ var weight = 0.0
 
 #Variables to be used in _process
 var rotator = 0
-var changing_position = Vector2(2048, 0)
+var changing_position = Vector2(2048, -192)
 onready var cur_pool = EasyPool
 onready var spawnTimer = $SpawnTimer
 
@@ -51,6 +52,7 @@ func _ready():
 	instanceOne = random_choice(EasyPool).instance()
 	instanceTwo = random_choice(EasyPool).instance()
 	instanceThree = random_choice(EasyPool).instance()
+	generate_module(instanceOne, EasyPool)
 
 #Given an array, returns a value at a random valid index
 func random_choice(list: Array):
@@ -75,8 +77,10 @@ func generate_module(instance_to_add, pool):
 	return instance_to_add
 
 func _on_StartGameZone_area_entered(area):
-	generate_module(instanceOne, EasyPool)
 	spawnTimer.start(initial_spawn_wait_time_sec)
+	var door_close = doorClose.instance()
+	call_deferred("add_child", door_close)
+	door_close.position = Vector2(2048, 512)
 
 func _on_SpawnTimer_timeout():
 	if cur_module >= amt_to_medium_pool:

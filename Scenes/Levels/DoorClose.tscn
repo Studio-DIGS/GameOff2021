@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Levels/GreenTile.tres" type="TileSet" id=1]
+
+[node name="DoorClose" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+format = 1
+tile_data = PoolIntArray( -589824, 27, 0, -524288, 27, 0, -458752, 27, 0, -393216, 27, 0, -327680, 27, 0, -262144, 27, 0, -196608, 27, 0, -131072, 27, 0, -65536, 27, 0 )
