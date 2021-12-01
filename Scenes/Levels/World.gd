@@ -33,7 +33,6 @@ var initial_spawn_wait_time_ms = spawn_wait_time_ms
 var weight = 0.0
 
 #Variables to be used in _process
-var previous_spawn_time = 0
 var rotator = 0
 var changing_position = Vector2(-3072, 0)
 onready var cur_pool = EasyPool
@@ -50,32 +49,7 @@ func _ready():
 	instanceOne = random_choice(EasyPool).instance()
 	instanceTwo = random_choice(EasyPool).instance()
 	instanceThree = random_choice(EasyPool).instance()
-
-#Every spawn_wait_time_ms milliseconds, adds an instanceNumber scene to the world and deletes the instanceNumber scene 2 levels below it (i.e adding instanceThree also deletes instanceOne)
-func _process(_delta):
-	var time_diff = OS.get_system_time_msecs() - previous_spawn_time
-	if time_diff > spawn_wait_time_ms:
-		if cur_module >= amt_to_medium_pool:
-			cur_pool = MediumPool
-		if cur_module >= (amt_to_medium_pool + amt_to_hard_pool):
-			cur_pool = HardPool
-		randomize()
-		if rotator == 0:
-			instanceOne = generate_and_free_module(instanceOne, instanceTwo, cur_pool)
-			previous_spawn_time = OS.get_system_time_msecs()
-			rotator += 1
-			cur_module += 1
-		elif rotator == 1:
-			instanceTwo = generate_and_free_module(instanceTwo, instanceThree, cur_pool)
-			previous_spawn_time = OS.get_system_time_msecs()
-			rotator += 1
-			cur_module += 1
-		else:
-			instanceThree = generate_and_free_module(instanceThree, instanceOne, cur_pool)
-			previous_spawn_time = OS.get_system_time_msecs()
-			rotator = 0
-			cur_module += 1
-	
+	generate_module(instanceOne, EasyPool)
 
 #Given an array, returns a value at a random valid index
 func random_choice(list: Array):
@@ -86,17 +60,34 @@ func random_choice(list: Array):
 
 #Generates a module from pool, assigns it to instance_to_add, and frees instance_to_remove from memory
 func generate_and_free_module (instance_to_add, instance_to_remove, pool):
+	instance_to_add = generate_module(instance_to_add, pool)
+	instance_to_remove.queue_free()
+	return instance_to_add
+
+func generate_module(instance_to_add, pool):
 	instance_to_add = random_choice(pool).instance()
 	call_deferred("add_child", instance_to_add)
 	instance_to_add.position = changing_position
 	changing_position += Vector2(0, -HEIGHT_OF_MODULE)
-	instance_to_remove.queue_free()
+	rotator += 1
+	cur_module += 1
 	return instance_to_add
-	
 
 #Function activates every time a new module is put into the world
 #Increments weight slightly to increase spawn time of modules by said weight% from initial spawn time
 func _on_Timer_timeout():
+	if cur_module >= amt_to_medium_pool:
+		cur_pool = MediumPool
+	if cur_module >= (amt_to_medium_pool + amt_to_hard_pool):
+		cur_pool = HardPool
+	randomize()
+	if rotator == 0:
+		instanceOne = generate_and_free_module(instanceOne, instanceTwo, cur_pool)
+	elif rotator == 1:
+		instanceTwo = generate_and_free_module(instanceTwo, instanceThree, cur_pool)
+	else:
+		instanceThree = generate_and_free_module(instanceThree, instanceOne, cur_pool)
+		rotator = 0
 	if weight < 1:
 		weight += 0.1
 	spawn_wait_time_ms = lerp(initial_spawn_wait_time_ms, final_spawn_wait_time_ms, weight)
