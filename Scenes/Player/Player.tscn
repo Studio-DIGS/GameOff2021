@@ -277,7 +277,7 @@ tracks/3/keys = {
 "start_offset": 0.0,
 "stream": ExtResource( 6 )
 } ],
-"times": PoolRealArray( 0.1 )
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=12]
@@ -473,7 +473,7 @@ texture = ExtResource( 1 )
 offset = Vector2( 0, -12 )
 hframes = 9
 vframes = 16
-frame = 18
+frame = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )

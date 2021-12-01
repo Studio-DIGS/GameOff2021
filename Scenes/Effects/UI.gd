@@ -10,7 +10,6 @@ onready var heartUIHalf = $HeartHalf
 onready var heartUIEmpty = $HeartEmpty
 
 func set_hearts(value):
-	print(str(value))
 	health = value
 	hearts = health / 2
 	half_hearts = (health + 1) / 2
