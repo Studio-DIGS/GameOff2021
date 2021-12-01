@@ -10,6 +10,7 @@ onready var heartUIHalf = $HeartHalf
 onready var heartUIEmpty = $HeartEmpty
 
 func set_hearts(value):
+	print(str(value))
 	health = value
 	hearts = health / 2
 	half_hearts = (health + 1) / 2
@@ -29,10 +30,10 @@ func set_max_hearts(value):
 	max_hearts = max(value, 1)
 	self.hearts = min(hearts, max_hearts)
 	if heartUIEmpty != null:
-		heartUIEmpty.rect_size.x = max_hearts * 56
+		heartUIEmpty.rect_size.x = max_hearts / 2 * 56
 
 func _ready():
-	self.max_hearts = Stats.max_health / 2
+	self.max_hearts = Stats.max_health
 	self.health = Stats.health
 	Stats.connect("health_changed", self, "set_hearts")
 	Stats.connect("max_health_changed", self, "set_max_hearts")
