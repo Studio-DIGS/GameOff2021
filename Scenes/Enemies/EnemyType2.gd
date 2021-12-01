@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 onready var find_player = $PlayerDetection
-var bullet = load("res://Bullet.tscn")
+var bullet = load("res://Scenes/Effects/Bullet.tscn")
 var bullet_Speed = 100
 var playerLocation = null
 

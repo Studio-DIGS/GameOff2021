@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Levels/GreenTile.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Scenes/Effects/OneWay.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Effects/UI.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Images/bg.png" type="Texture" id=11]
+[ext_resource path="res://Scenes/Effects/Pause.gd" type="Script" id=12]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 6 )
@@ -77,12 +78,28 @@ position = Vector2( 2240, -64 )
 position = Vector2( -2647.17, 384.347 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 10 )]
 margin_left = 5.10803
 margin_top = 3.83102
 margin_right = 5.10803
 margin_bottom = 3.83105
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0.160784 )
 
 [connection signal="timeout" from="MovingCamera/Timer" to="." method="_on_Timer_timeout"]
 
