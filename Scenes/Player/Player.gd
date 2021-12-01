@@ -28,6 +28,7 @@ onready var sprite = $Sprite
 onready var hurtbox = $Hurtbox
 onready var web = $WebAnimation
 onready var animationState = $AnimationTree.get("parameters/playback")
+const playerHurtSound = preload("res://Scenes/Player/PlayerHurtSound.tscn")
 
 enum {
 	MOVE,
@@ -206,6 +207,8 @@ func _on_CancelGrapple_body_entered(body):
 
 
 func _on_Hurtbox_area_entered(area):
+	var damage_audio = playerHurtSound.instance()
+	get_tree().current_scene.add_child(damage_audio)
 	velocity = Vector2(clamp(velocity.x, -KNOCKBACK, KNOCKBACK) * -1, -KNOCKBACK)
 	Stats.health -= area.damage
 	hurtbox.start_invincibility(0.9)
