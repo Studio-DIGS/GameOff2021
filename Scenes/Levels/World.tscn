@@ -213,6 +213,7 @@ position = Vector2( 2176, 512 )
 [node name="SpawnTimer" type="Timer" parent="."]
 
 [node name="logo" parent="." instance=ExtResource( 15 )]
+position = Vector2( 955.807, 145.013 )
 
 [connection signal="area_entered" from="MovingCamera/TriggerZone" to="DeathScreen" method="_on_TriggerZone_area_entered"]
 [connection signal="area_entered" from="StartGameZone" to="." method="_on_StartGameZone_area_entered"]

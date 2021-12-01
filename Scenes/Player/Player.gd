@@ -51,6 +51,7 @@ signal shoot_web()
 
 func _ready():
 	$AnimationTree.active = true
+	$BlinkPlayer.play("Stop")
 
 
 func _physics_process(delta):
