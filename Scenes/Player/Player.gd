@@ -24,6 +24,7 @@ onready var ray_left = $Raycasts/left
 onready var cursor = $Cursor
 onready var cursor_area = $Cursor/CursorArea
 onready var sprite = $Sprite
+onready var hurtbox = $Hurtbox
 onready var web = $WebAnimation
 onready var animationState = $AnimationTree.get("parameters/playback")
 
@@ -207,3 +208,14 @@ func _on_CancelGrapple_body_entered(body):
 
 func _on_Hurtbox_area_entered(area):
 	Stats.health -= area.damage
+	hurtbox.start_invincibility(0.6)
+
+
+func _on_Hurtbox_invincibility_started():
+	$BlinkPlayer.play("Start")
+	
+
+
+func _on_Hurtbox_invincibility_ended():
+	print("ended")
+	$BlinkPlayer.play("Stop")
