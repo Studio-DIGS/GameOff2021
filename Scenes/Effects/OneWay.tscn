@@ -6,6 +6,7 @@
 extents = Vector2( 171.486, 7.97255 )
 
 [node name="OneWay" type="StaticBody2D"]
+collision_layer = 256
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -0.0423275, 0.042687 )

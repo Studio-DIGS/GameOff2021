@@ -76,6 +76,7 @@ dash={
 2d_physics/layer_6="Enemy"
 2d_physics/layer_7="Enemy Projectiles"
 2d_physics/layer_8="PlayerHurtbox"
+2d_physics/layer_9="Platforms"
 
 [physics]
 

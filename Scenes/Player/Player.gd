@@ -187,8 +187,6 @@ func _draw():
 	pass
 
 
-
-
 func _on_CursorArea_area_entered(area):
 	prev_lockon = lockon
 	lockon = area
@@ -215,7 +213,5 @@ func _on_Hurtbox_invincibility_started():
 	$BlinkPlayer.play("Start")
 	
 
-
 func _on_Hurtbox_invincibility_ended():
-	print("ended")
 	$BlinkPlayer.play("Stop")
