@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Scenes/Levels/GreenTile.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Scenes/Levels/World.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/Effects/DeathScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Effects/DeathScreen.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Effects/OneWay.tscn" type="PackedScene" id=9]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 6 )
@@ -62,6 +63,9 @@ position = Vector2( 956, -198 )
 
 [node name="EnemyType3" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1260, -324 )
+
+[node name="OneWay" parent="." instance=ExtResource( 9 )]
+position = Vector2( -2240.68, 409.112 )
 
 [connection signal="timeout" from="MovingCamera/Timer" to="." method="_on_Timer_timeout"]
 
