@@ -75,7 +75,10 @@ position = Vector2( 956, -198 )
 position = Vector2( 2240, -64 )
 
 [node name="OneWay" parent="." instance=ExtResource( 9 )]
-position = Vector2( -2647.17, 384.347 )
+position = Vector2( -2048, 384 )
+
+[node name="OneWay2" parent="." instance=ExtResource( 9 )]
+position = Vector2( -2048, 128 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100

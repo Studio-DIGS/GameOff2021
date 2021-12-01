@@ -437,7 +437,6 @@ frame = 22
 shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-current = true
 
 [node name="Raycasts" type="Node2D" parent="."]
 
