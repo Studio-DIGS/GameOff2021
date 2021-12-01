@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Levels/GreenTile.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Images/bg.png" type="Texture" id=11]
 [ext_resource path="res://Scenes/Effects/Pause.gd" type="Script" id=12]
 [ext_resource path="res://Scenes/Effects/TriggerZone.tscn" type="PackedScene" id=13]
+[ext_resource path="res://SoundEffects/game music + cymbal.mp3" type="AudioStream" id=14]
 
 [node name="World2" type="Node2D"]
 script = ExtResource( 6 )
@@ -175,14 +176,17 @@ position = Vector2( -384, -832 )
 [node name="EnemyType3" parent="Enemies" instance=ExtResource( 4 )]
 position = Vector2( 192, -832 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+
 [node name="StartGameZone" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2176, 512 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="MovingCamera/TriggerZone" to="DeathScreen" method="_on_TriggerZone_area_entered"]
-[connection signal="area_entered" from="StartGameZone" to="." method="_on_StartGameZone_area_entered"]
 [connection signal="area_entered" from="StartGameZone" to="MovingCamera" method="_on_StartGameZone_area_entered"]
+[connection signal="area_entered" from="StartGameZone" to="." method="_on_StartGameZone_area_entered"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 
 [editable path="MovingCamera"]

@@ -5,11 +5,7 @@ onready var sprite = $AnimatedSprite
 var state = IDLE
 var SPEED = 600
 var velocity = Vector2.ZERO
-<<<<<<< Updated upstream
 var FRICTION = 600
-=======
-var FRICTION = 400
->>>>>>> Stashed changes
 var ACCELERATION = 400
 var BOUNCE = -50
 

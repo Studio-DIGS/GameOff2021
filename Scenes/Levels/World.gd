@@ -53,7 +53,9 @@ func _ready():
 	instanceTwo = random_choice(EasyPool).instance()
 	instanceThree = random_choice(EasyPool).instance()
 	generate_module(instanceOne, EasyPool)
-
+func _process(delta):
+	if $AudioStreamPlayer.playing == false:
+		$AudioStreamPlayer.play()
 #Given an array, returns a value at a random valid index
 func random_choice(list: Array):
 	if list.empty():
