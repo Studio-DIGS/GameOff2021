@@ -43,6 +43,9 @@ tile_data = PoolIntArray( -458756, 0, 0, -458755, 0, 0, -458754, 0, 0, -458753, 
 [node name="Grapple Point" parent="Prototyping/Grapples" instance=ExtResource( 3 )]
 =======
 [node name="Grapple Point" parent="Grapples" instance=ExtResource( 3 )]
+<<<<<<< HEAD
+>>>>>>> parent of dfd9ffb (Organized Files and Added Easy Levels)
+=======
 >>>>>>> parent of dfd9ffb (Organized Files and Added Easy Levels)
 position = Vector2( 448, 128 )
 
