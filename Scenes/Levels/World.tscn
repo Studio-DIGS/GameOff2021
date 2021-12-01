@@ -148,6 +148,7 @@ position = Vector2( 2048, 576 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
+[connection signal="area_entered" from="MovingCamera/TriggerZone" to="DeathScreen" method="_on_TriggerZone_area_entered"]
 [connection signal="area_entered" from="StartGameZone" to="." method="_on_StartGameZone_area_entered"]
 [connection signal="area_entered" from="StartGameZone" to="MovingCamera" method="_on_StartGameZone_area_entered"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
