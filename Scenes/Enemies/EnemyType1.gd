@@ -3,10 +3,10 @@ extends KinematicBody2D
 onready var playerDetectionZone = $PlayerDetection
 onready var sprite = $AnimatedSprite
 var state = IDLE
-var SPEED = 400
+var SPEED = 600
 var velocity = Vector2.ZERO
-var FRICTION = 400
-var ACCELERATION = 300
+var FRICTION = 600
+var ACCELERATION = 400
 var BOUNCE = -50
 
 
