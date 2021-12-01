@@ -206,5 +206,4 @@ func _on_CancelGrapple_body_entered(body):
 
 
 func _on_Hurtbox_area_entered(area):
-	pass
-	#Stats.health -= area.damage
+	Stats.health -= area.damage

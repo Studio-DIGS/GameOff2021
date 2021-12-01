@@ -17,6 +17,7 @@ __meta__ = {
 margin_right = 168.0
 margin_bottom = 48.0
 texture = ExtResource( 3 )
+expand = true
 stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -26,6 +27,7 @@ __meta__ = {
 margin_right = 168.0
 margin_bottom = 48.0
 texture = ExtResource( 1 )
+expand = true
 stretch_mode = 2
 __meta__ = {
 "_edit_use_anchors_": false
