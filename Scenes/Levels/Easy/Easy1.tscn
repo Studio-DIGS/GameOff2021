@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Effects/Grapple Point.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Levels/GreenTile.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/Effects/OneWay.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Enemies/EnemyType2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Enemies/EnemyType1.tscn" type="PackedScene" id=5]
 
 [node name="Easy1" type="Node2D"]
 
@@ -110,3 +112,23 @@ position = Vector2( 576, -1152 )
 
 [node name="OneWay4" parent="OneWayPlatforms" instance=ExtResource( 3 )]
 position = Vector2( 256, -384 )
+
+[node name="Enemies" type="YSort" parent="."]
+rotation = -0.0442335
+
+[node name="EnemyType2" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 941.666, -336.419 )
+rotation = 0.0534746
+scale = Vector2( 1, 1 )
+
+[node name="EnemyType5" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 1126.05, -2879.88 )
+rotation = 0.0534746
+
+[node name="EnemyType1" parent="Enemies" instance=ExtResource( 5 )]
+position = Vector2( 1005.41, -542.119 )
+rotation = 0.0534746
+
+[editable path="Enemies/EnemyType1"]
+[editable path="Enemies/EnemyType1/PlayerDetection"]
+[editable path="Enemies/EnemyType1/Hitbox"]

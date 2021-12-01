@@ -1,10 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Effects/Grapple Point.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Levels/GreenTile.tres" type="TileSet" id=2]
 [ext_resource path="res://Scenes/Effects/OneWayPurple.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Enemies/EnemyType2.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Enemies/EnemyType1.tscn" type="PackedScene" id=5]
 
 [node name="Medium2" type="Node2D"]
+
+[node name="YSort" type="YSort" parent="."]
+position = Vector2( 910.167, -2521.46 )
+
+[node name="EnemyType1" parent="YSort" instance=ExtResource( 5 )]
+position = Vector2( -443.167, 1377.55 )
+
+[node name="EnemyType2" parent="YSort" instance=ExtResource( 5 )]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -113,3 +123,7 @@ position = Vector2( 704, -2752 )
 
 [node name="OneWay10" parent="OneWayPlatforms" instance=ExtResource( 3 )]
 position = Vector2( 448, -2944 )
+
+[node name="EnemyType2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1972.7, -1950.15 )
+rotation = 3.14159

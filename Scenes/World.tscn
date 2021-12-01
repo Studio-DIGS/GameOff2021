@@ -67,6 +67,14 @@ position = Vector2( 1258.58, -226.297 )
 [node name="EnemyType2" parent="." instance=ExtResource( 5 )]
 position = Vector2( 38.5162, -93.4098 )
 
+[node name="CollisionShape2D" parent="EnemyType2/PlayerDetection" index="0"]
+position = Vector2( 2.66968, 0 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 6 )]
+
+[node name="EnemyType3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 616.33, 379.635 )
+
+[editable path="EnemyType2"]

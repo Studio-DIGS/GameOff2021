@@ -3,7 +3,7 @@ extends StaticBody2D
 onready var find_player = $PlayerDetection
 onready var timer = $PTimer
 var bullet = load("res://Scenes/Effects/Bullet.tscn")
-var bullet_Speed = 100
+var bullet_Speed = 1500
 var playerLocation = null
 var can_shoot = true
 
@@ -20,9 +20,10 @@ func _physics_process(delta):
 func attack(input):
 	var bullet_instanced = bullet.instance()
 	get_parent().add_child(bullet_instanced) # learn this Anthony
+	bullet_instanced.look_at(input)
 	bullet_instanced.position = global_position
 	bullet_instanced.apply_impulse(Vector2.ZERO, input.normalized() * bullet_Speed)
-	timer.start(2)
+	timer.start(1)
 	can_shoot = false
 
 func _on_Timer_timeout():
