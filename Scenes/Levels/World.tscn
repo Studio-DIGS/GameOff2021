@@ -16,9 +16,6 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource( 6 )
-amt_to_medium_pool = 1
-amt_to_hard_pool = 1
-spawn_wait_time_sec = 15.0
 
 [node name="Interfaces" type="CanvasLayer" parent="."]
 layer = 100
@@ -64,10 +61,9 @@ position = Vector2( -1856, 192 )
 script = ExtResource( 8 )
 
 [node name="MovingCamera" parent="." instance=ExtResource( 5 )]
-position = Vector2( 3072, 448 )
+position = Vector2( 3072, 640 )
 current = false
 zoom = Vector2( 1.25, 1.25 )
-time_to_scroll_through_module_sec = 15.0
 
 [node name="TriggerZone" parent="MovingCamera" index="0"]
 position = Vector2( -1024, 1372.54 )
@@ -150,8 +146,10 @@ position = Vector2( 192, -832 )
 [node name="StartGameZone" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2048, 576 )
 
-[connection signal="timeout" from="MovingCamera/Timer" to="." method="_on_Timer_timeout"]
+[node name="SpawnTimer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="StartGameZone" to="." method="_on_StartGameZone_area_entered"]
 [connection signal="area_entered" from="StartGameZone" to="MovingCamera" method="_on_StartGameZone_area_entered"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 
 [editable path="MovingCamera"]

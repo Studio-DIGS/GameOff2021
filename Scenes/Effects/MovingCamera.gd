@@ -2,7 +2,7 @@ extends Camera2D
 
 const HEIGHT_OF_MODULE = 3072
 
-export var time_to_scroll_through_module_sec = 12.80
+export var time_to_scroll_through_module_sec = 15
 export var final_time_to_scroll_through_module_sec = 7.50
 
 onready var timer = $Timer
@@ -10,13 +10,12 @@ onready var timer = $Timer
 var game_is_playing = false
 
 #Camera speed variables
-var camera_speed = HEIGHT_OF_MODULE/time_to_scroll_through_module_sec
+var camera_speed = HEIGHT_OF_MODULE / time_to_scroll_through_module_sec
 var initial_cam_speed = camera_speed
 var weight = 0.0
 
-#Starts a timer for incrementing speed of camera
 func _ready():
-	timer.start(3072 / initial_cam_speed)
+	timer.stop()
 
 #Moves camera up camera_speed units every second
 func _physics_process(delta):
@@ -32,8 +31,9 @@ func _on_TriggerZone_area_entered(area):
 func _on_Timer_timeout():
 	if weight < 1:
 		weight += 0.1
-	camera_speed = lerp(initial_cam_speed, HEIGHT_OF_MODULE/final_time_to_scroll_through_module_sec, weight)
-	timer.start(HEIGHT_OF_MODULE / camera_speed)
+	camera_speed = lerp(time_to_scroll_through_module_sec, final_time_to_scroll_through_module_sec, weight)
+	timer.start(camera_speed)
+	camera_speed = HEIGHT_OF_MODULE / camera_speed
 
 
 func _on_StartGameZone_area_entered(area):

@@ -25,17 +25,18 @@ export var amt_to_medium_pool = 5
 export var amt_to_hard_pool = 5
 
 #Camera Speed Variables
-export var spawn_wait_time_sec = 12.800
+export var spawn_wait_time_sec = 15.0
 export var final_spawn_wait_time_sec = 7.50
-var final_spawn_wait_time_ms = final_spawn_wait_time_sec * 1000
-var spawn_wait_time_ms = spawn_wait_time_sec * 1000
-var initial_spawn_wait_time_ms = spawn_wait_time_ms
+#var final_spawn_wait_time_ms = final_spawn_wait_time_sec * 1000
+#var spawn_wait_time_ms = spawn_wait_time_sec * 1000
+var initial_spawn_wait_time_sec = spawn_wait_time_sec
 var weight = 0.0
 
 #Variables to be used in _process
 var rotator = 0
 var changing_position = Vector2(2048, 0)
 onready var cur_pool = EasyPool
+onready var spawnTimer = $SpawnTimer
 
 #variables for level generation
 var instanceOne
@@ -72,9 +73,11 @@ func generate_module(instance_to_add, pool):
 	cur_module += 1
 	return instance_to_add
 
-#Function activates every time a new module is put into the world
-#Increments weight slightly to increase spawn time of modules by said weight% from initial spawn time
-func _on_Timer_timeout():
+func _on_StartGameZone_area_entered(area):
+	generate_module(instanceOne, EasyPool)
+	spawnTimer.start(initial_spawn_wait_time_sec)
+
+func _on_SpawnTimer_timeout():
 	if cur_module >= amt_to_medium_pool:
 		cur_pool = MediumPool
 	if cur_module >= (amt_to_medium_pool + amt_to_hard_pool):
@@ -89,7 +92,5 @@ func _on_Timer_timeout():
 		rotator = 0
 	if weight < 1:
 		weight += 0.1
-	spawn_wait_time_ms = lerp(initial_spawn_wait_time_ms, final_spawn_wait_time_ms, weight)
-
-func _on_StartGameZone_area_entered(area):
-	generate_module(instanceOne, EasyPool)
+	spawn_wait_time_sec = lerp(initial_spawn_wait_time_sec, final_spawn_wait_time_sec, weight)
+	spawnTimer.start(spawn_wait_time_sec)
