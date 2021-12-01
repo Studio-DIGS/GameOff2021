@@ -44,7 +44,7 @@ var target = Vector2.ZERO
 var aim = Vector2.ZERO
 var webshot_instance = null
 var active_shot = false
-var webshot = preload("res://Scenes/Player/Webshot.tscn")
+var webshot = preload("res://Scenes/Player/Web/Webshot.tscn")
 signal shoot_web()
 
 func _ready():

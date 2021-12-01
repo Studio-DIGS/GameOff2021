@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scenes/Player/test_web.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player/Web/test_web.gd" type="Script" id=1]
 [ext_resource path="res://Images/SpaceInvader.png" type="Texture" id=2]
-[ext_resource path="res://Scenes/Player/Line2D.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Player/Web/Line2D.gd" type="Script" id=3]
 
 
 [sub_resource type="CircleShape2D" id=1]

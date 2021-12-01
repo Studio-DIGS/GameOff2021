@@ -9,7 +9,7 @@
 [ext_resource path="res://Scenes/Effects/DeathScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Effects/DeathScreen.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Effects/OneWay.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Scenes/Effects/UI.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Images/bg.png" type="Texture" id=11]
 
 [node name="World" type="Node2D"]
@@ -40,7 +40,7 @@ position = Vector2( 1826.8, -66.287 )
 [node name="Grapples" type="Node2D" parent="."]
 
 [node name="Grapple Point" parent="Grapples" instance=ExtResource( 3 )]
-position = Vector2( 448, 128 )
+position = Vector2( -2624, 256 )
 
 [node name="Grapple Point2" parent="Grapples" instance=ExtResource( 3 )]
 position = Vector2( 1233.93, -76.8647 )
@@ -59,7 +59,6 @@ position = Vector2( 110.668, -119.232 )
 
 [node name="MovingCamera" parent="." instance=ExtResource( 5 )]
 position = Vector2( -2048, 640 )
-current = false
 zoom = Vector2( 1.25, 1.25 )
 
 [node name="TriggerZone" parent="MovingCamera" index="0"]
@@ -72,7 +71,7 @@ autostart = true
 position = Vector2( 956, -198 )
 
 [node name="EnemyType3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1260, -324 )
+position = Vector2( 2240, -64 )
 
 [node name="OneWay" parent="." instance=ExtResource( 9 )]
 position = Vector2( -2647.17, 384.347 )

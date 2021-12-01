@@ -16,7 +16,7 @@ config/icon="res://Images/icon.png"
 
 [autoload]
 
-Stats="*res://Scenes/Stats.tscn"
+Stats="*res://Scenes/Effects/Stats.tscn"
 
 [display]
 
