@@ -2,7 +2,7 @@ extends Camera2D
 
 const HEIGHT_OF_MODULE = 3072
 
-export var time_to_scroll_through_module_sec = 15
+export var time_to_scroll_through_module_sec = 15.0
 export var final_time_to_scroll_through_module_sec = 7.50
 
 onready var timer = $Timer
