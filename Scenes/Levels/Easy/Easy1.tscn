@@ -119,7 +119,6 @@ rotation = -0.0442335
 [node name="EnemyType2" parent="Enemies" instance=ExtResource( 4 )]
 position = Vector2( 941.666, -336.419 )
 rotation = 0.0534746
-scale = Vector2( 1, 1 )
 
 [node name="EnemyType5" parent="Enemies" instance=ExtResource( 5 )]
 position = Vector2( 1126.05, -2879.88 )
@@ -128,6 +127,9 @@ rotation = 0.0534746
 [node name="EnemyType1" parent="Enemies" instance=ExtResource( 5 )]
 position = Vector2( 1005.41, -542.119 )
 rotation = 0.0534746
+
+[node name="AnimatedSprite" parent="Enemies/EnemyType1" index="4"]
+frame = 3
 
 [editable path="Enemies/EnemyType1"]
 [editable path="Enemies/EnemyType1/PlayerDetection"]

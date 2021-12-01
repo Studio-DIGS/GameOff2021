@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/game music + cymbal.mp3-4445122dcb2e51c84f85dfd4658670b7.mp3str"
+
+[deps]
+
+source_file="res://SoundEffects/game music + cymbal.mp3"
+dest_files=[ "res://.import/game music + cymbal.mp3-4445122dcb2e51c84f85dfd4658670b7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

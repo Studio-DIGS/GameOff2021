@@ -4,9 +4,8 @@ extends Node2D
 
 #Arrays of each pool of levels, separated by difficulty
 onready var EasyPool = [
-#	preload("res://Scenes/World.tscn")
 	preload("res://Scenes/Levels/Easy/Easy1.tscn"),
-#	preload("res://Scenes/Levels/Easy/Easy2.tscn")
+	preload("res://Scenes/Levels/Easy/Easy2.tscn")
 ]
 onready var MediumPool = [
 	preload("res://Scenes/Levels/Medium/Medium1.tscn"),
@@ -53,7 +52,9 @@ func _ready():
 	instanceTwo = random_choice(EasyPool).instance()
 	instanceThree = random_choice(EasyPool).instance()
 	generate_module(instanceOne, EasyPool)
-
+func _process(delta):
+	if $AudioStreamPlayer.playing == false:
+		$AudioStreamPlayer.play()
 #Given an array, returns a value at a random valid index
 func random_choice(list: Array):
 	if list.empty():
