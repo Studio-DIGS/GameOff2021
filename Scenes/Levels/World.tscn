@@ -58,7 +58,7 @@ tile_data = PoolIntArray( -1572902, 26, 0, -1572901, 18, 0, -1572900, 18, 0, -15
 position = Vector2( 0, 384 )
 
 [node name="DeathScreen" parent="." instance=ExtResource( 7 )]
-position = Vector2( -3599.02, 988.573 )
+position = Vector2( -1920, 256 )
 script = ExtResource( 8 )
 
 [node name="MovingCamera" parent="." instance=ExtResource( 5 )]
@@ -174,7 +174,7 @@ position = Vector2( -64, -1024 )
 position = Vector2( -384, -832 )
 
 [node name="EnemyType3" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 394.621, 133.308 )
+position = Vector2( 192, -832 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
