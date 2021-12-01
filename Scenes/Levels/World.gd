@@ -7,19 +7,22 @@ onready var EasyPool = [
 	preload("res://Scenes/Levels/Easy/Easy1.tscn"),
 	preload("res://Scenes/Levels/Easy/Easy2.tscn"),
 	preload("res://Scenes/Levels/Easy/Easy3.tscn"),
-	preload("res://Scenes/Levels/Easy/Easy4.tscn")
+	preload("res://Scenes/Levels/Easy/Easy4.tscn"),
+	preload("res://Scenes/Levels/Easy/Easy5.tscn")
 ]
 onready var MediumPool = [
 	preload("res://Scenes/Levels/Medium/Medium1.tscn"),
 	preload("res://Scenes/Levels/Medium/Medium2.tscn"),
 	preload("res://Scenes/Levels/Medium/Medium3.tscn"),
-	preload("res://Scenes/Levels/Medium/Medium4.tscn")
+	preload("res://Scenes/Levels/Medium/Medium4.tscn"),
+	preload("res://Scenes/Levels/Medium/Medium5.tscn")
 ]
 onready var HardPool = [
 	preload("res://Scenes/Levels/Hard/Hard1.tscn"),
 	preload("res://Scenes/Levels/Hard/Hard2.tscn"),
 	preload("res://Scenes/Levels/Hard/Hard3.tscn"),
-	preload("res://Scenes/Levels/Hard/Hard4.tscn")
+	preload("res://Scenes/Levels/Hard/Hard4.tscn"),
+	preload("res://Scenes/Levels/Hard/Hard5.tscn")
 ]
 onready var doorClose = preload("res://Scenes/Levels/DoorClose.tscn")
 

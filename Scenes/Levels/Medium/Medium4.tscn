@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Scenes/Effects/Grapple Point.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Enemies/EnemyType1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Effects/OneWayPurple.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Levels/GreenTile.tres" type="TileSet" id=4]
-[ext_resource path="res://Scenes/Levels/logo.tscn" type="PackedScene" id=5]
 
 [node name="Medium4" type="Node2D"]
 
@@ -131,9 +130,3 @@ position = Vector2( 1600, -576 )
 
 [node name="EnemyType4" parent="Enemies" instance=ExtResource( 2 )]
 position = Vector2( 448, -576 )
-
-[node name="Logo" type="Node2D" parent="."]
-
-[node name="logo" parent="Logo" instance=ExtResource( 5 )]
-position = Vector2( 832, -2880 )
-scale = Vector2( 6.69967, 8 )

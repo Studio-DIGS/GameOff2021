@@ -23,8 +23,6 @@ font_data = ExtResource( 16 )
 
 [node name="World2" type="Node2D"]
 script = ExtResource( 6 )
-amt_to_medium_pool = 0
-amt_to_hard_pool = 0
 
 [node name="Interfaces" type="CanvasLayer" parent="."]
 layer = 100

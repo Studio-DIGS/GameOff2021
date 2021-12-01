@@ -1,0 +1,118 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Effects/Grapple Point.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Effects/OneWay.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Enemies/EnemyType1.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Levels/GreenTile.tres" type="TileSet" id=4]
+
+[node name="Easy5" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 4 )
+format = 1
+tile_data = PoolIntArray( -3145728, 27, 0, -3145697, 39, 0, -3080192, 27, 0, -3080161, 39, 0, -3014656, 27, 0, -3014625, 39, 0, -2949120, 27, 0, -2949119, 18, 0, -2949118, 18, 0, -2949117, 18, 0, -2949116, 18, 0, -2949115, 18, 0, -2949114, 18, 0, -2949113, 18, 0, -2949112, 18, 0, -2949111, 18, 0, -2949110, 18, 0, -2949109, 53, 0, -2949089, 39, 0, -2883584, 27, 0, -2883573, 30, 0, -2883553, 39, 0, -2818048, 27, 0, -2818037, 30, 0, -2818017, 39, 0, -2752512, 27, 0, -2752501, 30, 0, -2752494, 26, 0, -2752493, 18, 0, -2752492, 18, 0, -2752491, 18, 0, -2752490, 18, 0, -2752489, 18, 0, -2752488, 18, 0, -2752487, 18, 0, -2752486, 18, 0, -2752485, 18, 0, -2752484, 18, 0, -2752483, 18, 0, -2752482, 18, 0, -2752481, 39, 0, -2686976, 27, 0, -2686965, 30, 0, -2686958, 30, 0, -2686945, 39, 0, -2621440, 27, 0, -2621429, 30, 0, -2621422, 30, 0, -2621409, 39, 0, -2555904, 27, 0, -2555903, 18, 0, -2555902, 18, 0, -2555901, 18, 0, -2555900, 18, 0, -2555899, 18, 0, -2555898, 18, 0, -2555897, 18, 0, -2555896, 18, 0, -2555895, 18, 0, -2555894, 18, 0, -2555893, 23, 0, -2555886, 30, 0, -2555873, 39, 0, -2490368, 27, 0, -2490350, 30, 0, -2490337, 39, 0, -2424832, 27, 0, -2424814, 50, 0, -2424813, 18, 0, -2424812, 18, 0, -2424811, 18, 0, -2424810, 18, 0, -2424809, 18, 0, -2424808, 18, 0, -2424807, 18, 0, -2424806, 18, 0, -2424805, 18, 0, -2424804, 18, 0, -2424803, 18, 0, -2424802, 18, 0, -2424801, 39, 0, -2359296, 27, 0, -2359265, 39, 0, -2293760, 27, 0, -2293729, 39, 0, -2228224, 27, 0, -2228193, 39, 0, -2162688, 27, 0, -2162657, 39, 0, -2097152, 27, 0, -2097121, 39, 0, -2031616, 27, 0, -2031585, 39, 0, -1966080, 27, 0, -1966049, 39, 0, -1900544, 27, 0, -1900531, 30, 0, -1900519, 30, 0, -1900513, 39, 0, -1835008, 27, 0, -1834995, 30, 0, -1834983, 30, 0, -1834977, 39, 0, -1769472, 27, 0, -1769459, 30, 0, -1769447, 30, 0, -1769441, 39, 0, -1703936, 27, 0, -1703923, 30, 0, -1703911, 30, 0, -1703905, 39, 0, -1638400, 27, 0, -1638381, 30, 0, -1638369, 39, 0, -1572864, 27, 0, -1572845, 30, 0, -1572833, 39, 0, -1507328, 27, 0, -1507309, 30, 0, -1507297, 39, 0, -1441792, 27, 0, -1441773, 30, 0, -1441761, 39, 0, -1376256, 27, 0, -1376242, 30, 0, -1376230, 30, 0, -1376225, 39, 0, -1310720, 27, 0, -1310706, 30, 0, -1310694, 30, 0, -1310689, 39, 0, -1245184, 27, 0, -1245170, 30, 0, -1245158, 30, 0, -1245153, 39, 0, -1179648, 27, 0, -1179634, 30, 0, -1179622, 30, 0, -1179617, 39, 0, -1114112, 27, 0, -1114081, 39, 0, -1048576, 27, 0, -1048556, 30, 0, -1048545, 39, 0, -983040, 27, 0, -983020, 30, 0, -983009, 39, 0, -917504, 27, 0, -917484, 30, 0, -917473, 39, 0, -851968, 27, 0, -851948, 30, 0, -851937, 39, 0, -786432, 27, 0, -786425, 30, 0, -786407, 30, 0, -786401, 39, 0, -720896, 27, 0, -720889, 30, 0, -720871, 30, 0, -720865, 39, 0, -655360, 27, 0, -655353, 30, 0, -655335, 30, 0, -655329, 39, 0, -589824, 27, 0, -589820, 16, 0, -589819, 18, 0, -589818, 18, 0, -589817, 18, 0, -589816, 18, 0, -589815, 18, 0, -589814, 17, 0, -589799, 30, 0, -589793, 39, 0, -524288, 27, 0, -524281, 30, 0, -524257, 39, 0, -458752, 27, 0, -458745, 30, 0, -458721, 39, 0, -393216, 27, 0, -393209, 30, 0, -393185, 39, 0, -327680, 27, 0, -327649, 39, 0, -262144, 27, 0, -262113, 39, 0, -196608, 27, 0, -196577, 39, 0, -131072, 27, 0, -131041, 39, 0, -65536, 27, 0, -65505, 39, 0 )
+
+[node name="Grapples" type="Node2D" parent="."]
+
+[node name="Grapple Point" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 960, -256 )
+
+[node name="Grapple Point2" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 192, -256 )
+
+[node name="Grapple Point3" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 1600, -256 )
+
+[node name="Grapple Point4" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 1856, -640 )
+
+[node name="Grapple Point5" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 1664, -960 )
+
+[node name="Grapple Point6" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 1344, -1216 )
+
+[node name="Grapple Point7" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 1024, -1472 )
+
+[node name="Grapple Point8" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 1728, -1472 )
+
+[node name="Grapple Point9" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 640, -1408 )
+
+[node name="Grapple Point10" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 192, -1792 )
+
+[node name="Grapple Point12" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 640, -1792 )
+
+[node name="Grapple Point13" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 512, -2240 )
+
+[node name="Grapple Point14" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 1024, -2240 )
+
+[node name="Grapple Point15" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 960, -2880 )
+
+[node name="Grapple Point16" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 1600, -2944 )
+
+[node name="Grapple Point11" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 192, -1408 )
+
+[node name="OneWayPlatforms" type="Node2D" parent="."]
+
+[node name="OneWay" parent="OneWayPlatforms" instance=ExtResource( 2 )]
+position = Vector2( 1472, -448 )
+
+[node name="OneWay2" parent="OneWayPlatforms" instance=ExtResource( 2 )]
+position = Vector2( 1088, -768 )
+
+[node name="OneWay3" parent="OneWayPlatforms" instance=ExtResource( 2 )]
+position = Vector2( 256, -1088 )
+
+[node name="OneWay13" parent="OneWayPlatforms" instance=ExtResource( 2 )]
+position = Vector2( 192, -512 )
+
+[node name="OneWay4" parent="OneWayPlatforms" instance=ExtResource( 2 )]
+position = Vector2( 640, -1088 )
+
+[node name="OneWay5" parent="OneWayPlatforms" instance=ExtResource( 2 )]
+position = Vector2( 256, -2048 )
+
+[node name="OneWay6" parent="OneWayPlatforms" instance=ExtResource( 2 )]
+position = Vector2( 640, -2048 )
+
+[node name="OneWay7" parent="OneWayPlatforms" instance=ExtResource( 2 )]
+position = Vector2( 1024, -2048 )
+
+[node name="OneWay8" parent="OneWayPlatforms" instance=ExtResource( 2 )]
+position = Vector2( 1408, -2048 )
+
+[node name="OneWay9" parent="OneWayPlatforms" instance=ExtResource( 2 )]
+position = Vector2( 1792, -2048 )
+
+[node name="OneWay10" parent="OneWayPlatforms" instance=ExtResource( 2 )]
+position = Vector2( 832, -1856 )
+rotation = -1.5708
+
+[node name="OneWay11" parent="OneWayPlatforms" instance=ExtResource( 2 )]
+position = Vector2( 832, -1600 )
+rotation = -1.5708
+
+[node name="OneWay12" parent="OneWayPlatforms" instance=ExtResource( 2 )]
+position = Vector2( 832, -1280 )
+rotation = -1.5708
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="EnemyType1" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 640, -1536 )
+
+[node name="EnemyType2" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 320, -2688 )
+
+[node name="EnemyType3" parent="Enemies" instance=ExtResource( 3 )]
+position = Vector2( 1536, -2496 )
