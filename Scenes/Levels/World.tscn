@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Levels/GreenTile.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -10,9 +10,17 @@
 [ext_resource path="res://Scenes/Effects/DeathScreen.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Effects/OneWay.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Images/bg.png" type="Texture" id=11]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 6 )
+
+[node name="BG" type="ParallaxBackground" parent="."]
+
+[node name="Sprite" type="Sprite" parent="BG"]
+position = Vector2( 812.081, 449.776 )
+scale = Vector2( 5.2007, 5.2007 )
+texture = ExtResource( 11 )
 
 [node name="DeathScreen" parent="." instance=ExtResource( 7 )]
 position = Vector2( 0, 448 )
