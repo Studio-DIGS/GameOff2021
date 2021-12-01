@@ -5,6 +5,7 @@ export var SPEED = 700.0
 export var ACCELERATION = 20.0
 export var TERMINAL_VELOCITY = 1000.0
 export var AIR_ACCELERATION = 1.75
+export var KNOCKBACK = 800
 # jump constants
 export var JUMP_HEIGHT = 250.0
 export var JUMP_PEAK = 0.5 # time to peak of jump
@@ -205,8 +206,10 @@ func _on_CancelGrapple_body_entered(body):
 
 
 func _on_Hurtbox_area_entered(area):
+	velocity = Vector2(clamp(velocity.x, -KNOCKBACK, KNOCKBACK) * -1, -KNOCKBACK)
 	Stats.health -= area.damage
-	hurtbox.start_invincibility(0.6)
+	hurtbox.start_invincibility(0.9)
+	state = MOVE
 
 
 func _on_Hurtbox_invincibility_started():
