@@ -392,7 +392,6 @@ frame = 22
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-current = true
 
 [node name="Raycasts" type="Node2D" parent="."]
 
@@ -403,11 +402,6 @@ cast_to = Vector2( 40, 0 )
 [node name="left" type="RayCast2D" parent="Raycasts"]
 enabled = true
 cast_to = Vector2( -40, 0 )
-
-[node name="webcast" type="RayCast2D" parent="Raycasts"]
-enabled = true
-collision_mask = 4
-collide_with_areas = true
 
 [node name="Cursor" type="Node2D" parent="."]
 
