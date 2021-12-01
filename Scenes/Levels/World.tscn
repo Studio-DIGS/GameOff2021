@@ -39,7 +39,11 @@ tile_data = PoolIntArray( -458756, 0, 0, -458755, 0, 0, -458754, 0, 0, -458753, 
 
 [node name="Grapples" type="Node2D" parent="Prototyping"]
 
+<<<<<<< HEAD
 [node name="Grapple Point" parent="Prototyping/Grapples" instance=ExtResource( 3 )]
+=======
+[node name="Grapple Point" parent="Grapples" instance=ExtResource( 3 )]
+>>>>>>> parent of dfd9ffb (Organized Files and Added Easy Levels)
 position = Vector2( 448, 128 )
 
 [node name="Grapple Point2" parent="Prototyping/Grapples" instance=ExtResource( 3 )]
@@ -80,6 +84,18 @@ position = Vector2( -1024, 1372.54 )
 [node name="Timer" parent="MovingCamera" index="1"]
 autostart = true
 
+<<<<<<< HEAD
+=======
+[node name="EnemyType2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 956, -198 )
+
+[node name="EnemyType3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1260, -324 )
+
+[node name="OneWay" parent="." instance=ExtResource( 9 )]
+position = Vector2( -2647.17, 384.347 )
+
+>>>>>>> parent of dfd9ffb (Organized Files and Added Easy Levels)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 100
 
