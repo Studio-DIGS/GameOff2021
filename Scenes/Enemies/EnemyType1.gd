@@ -1,10 +1,14 @@
 extends KinematicBody2D
 
+onready var playerDetectionZone = $PlayerDetection
+onready var sprite = $AnimatedSprite
+var state = IDLE
 var SPEED = 400
 var velocity = Vector2.ZERO
 var FRICTION = 400
 var ACCELERATION = 300
 var BOUNCE = -50
+
 
 enum{
 	IDLE,
@@ -12,10 +16,12 @@ enum{
 }
 
 #onready var stats = $Stats
-onready var playerDetectionZone = $PlayerDetection
-var state = IDLE
-
+	
 func _physics_process(delta):
+	if velocity.x < 0:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 	match state:
 		IDLE:
 			velocity = velocity.move_toward(Vector2.ZERO, FRICTION *delta)

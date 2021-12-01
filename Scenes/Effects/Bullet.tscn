@@ -3,20 +3,24 @@
 [ext_resource path="res://Scenes/Effects/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://Images/GreenLazer.png" type="Texture" id=2]
 
-
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 30.1703
+radius = 24.0387
+height = 24.117
 
 [node name="Bullet" type="RigidBody2D"]
+collision_layer = 0
+collision_mask = 2
 gravity_scale = 0.0
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 0.471924, -22.6529 )
-scale = Vector2( 0.1, 0.1 )
+scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -10 )
+scale = Vector2( 0.5, 0.5 )
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
