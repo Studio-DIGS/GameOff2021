@@ -9,7 +9,8 @@ onready var EasyPool = [
 ]
 onready var MediumPool = [
 	preload("res://Scenes/Levels/Medium/Medium1.tscn"),
-	preload("res://Scenes/Levels/Medium/Medium2.tscn")
+	preload("res://Scenes/Levels/Medium/Medium2.tscn"),
+	preload("res://Scenes/Levels/Medium/Medium3.tscn")
 ]
 onready var HardPool = [
 	preload("res://Scenes/Levels/Hard/Hard1.tscn"),
