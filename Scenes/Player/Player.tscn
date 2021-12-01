@@ -2,10 +2,10 @@
 
 [ext_resource path="res://Images/Spider Sprite Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Player/WebAnimation.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Player/Web/WebAnimation.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Hurtbox.tscn" type="PackedScene" id=4]
 
-[sub_resource type="Shader" id=50]
+[sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
 
 uniform bool active = false;
@@ -20,23 +20,22 @@ void fragment() {
 	COLOR = new_color;
 }"
 
-[sub_resource type="ShaderMaterial" id=51]
-shader = SubResource( 50 )
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
 shader_param/active = false
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 30.707, 18.9043 )
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=4]
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=5]
 radius = 710.048
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 31.1653, 30.3376 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "Fall"
+[sub_resource type="Animation" id=7]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -76,11 +75,9 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "FallRight"
+[sub_resource type="Animation" id=8]
 
-[sub_resource type="Animation" id=7]
-resource_name = "Idle"
+[sub_resource type="Animation" id=9]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -120,11 +117,9 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=8]
-resource_name = "IdleRight"
+[sub_resource type="Animation" id=10]
 
-[sub_resource type="Animation" id=9]
-resource_name = "Jump"
+[sub_resource type="Animation" id=11]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -163,11 +158,9 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=10]
-resource_name = "JumpRight"
+[sub_resource type="Animation" id=12]
 
-[sub_resource type="Animation" id=11]
-resource_name = "Land"
+[sub_resource type="Animation" id=13]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -206,8 +199,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=12]
-resource_name = "Run"
+[sub_resource type="Animation" id=14]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -247,10 +239,9 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "RunRight"
+[sub_resource type="Animation" id=15]
 
-[sub_resource type="Animation" id=39]
+[sub_resource type="Animation" id=16]
 resource_name = "WallLeft"
 length = 0.1
 loop = true
@@ -291,7 +282,7 @@ tracks/2/keys = {
 "values": [ 90.0 ]
 }
 
-[sub_resource type="Animation" id=43]
+[sub_resource type="Animation" id=17]
 resource_name = "WallRight"
 length = 0.1
 loop = true
@@ -332,69 +323,69 @@ tracks/2/keys = {
 "values": [ -90.0 ]
 }
 
-[sub_resource type="AnimationNodeAnimation" id=28]
+[sub_resource type="AnimationNodeAnimation" id=18]
 animation = "Fall"
 
-[sub_resource type="AnimationNodeAnimation" id=29]
+[sub_resource type="AnimationNodeAnimation" id=19]
 animation = "Idle"
 
-[sub_resource type="AnimationNodeAnimation" id=30]
+[sub_resource type="AnimationNodeAnimation" id=20]
 animation = "Jump"
 
-[sub_resource type="AnimationNodeAnimation" id=31]
+[sub_resource type="AnimationNodeAnimation" id=21]
 animation = "Land"
 
-[sub_resource type="AnimationNodeAnimation" id=32]
+[sub_resource type="AnimationNodeAnimation" id=22]
 animation = "Run"
 
-[sub_resource type="AnimationNodeAnimation" id=44]
+[sub_resource type="AnimationNodeAnimation" id=23]
 animation = "WallLeft"
 
-[sub_resource type="AnimationNodeAnimation" id=45]
+[sub_resource type="AnimationNodeAnimation" id=24]
 animation = "WallRight"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=33]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=34]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=35]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=36]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=37]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=46]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=47]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=48]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=49]
-
-[sub_resource type="AnimationNodeStateMachine" id=26]
-states/Fall/node = SubResource( 28 )
+[sub_resource type="AnimationNodeStateMachine" id=35]
+states/Fall/node = SubResource( 18 )
 states/Fall/position = Vector2( 413.318, 163.547 )
-states/Idle/node = SubResource( 29 )
+states/Idle/node = SubResource( 19 )
 states/Idle/position = Vector2( 588.508, 66.2375 )
-states/Jump/node = SubResource( 30 )
+states/Jump/node = SubResource( 20 )
 states/Jump/position = Vector2( 596.068, 163.297 )
-states/Land/node = SubResource( 31 )
+states/Land/node = SubResource( 21 )
 states/Land/position = Vector2( 414.068, 59.7975 )
-states/Run/node = SubResource( 32 )
+states/Run/node = SubResource( 22 )
 states/Run/position = Vector2( 739.068, 66.0175 )
-states/WallLeft/node = SubResource( 44 )
+states/WallLeft/node = SubResource( 23 )
 states/WallLeft/position = Vector2( 286.515, 283.025 )
-states/WallRight/node = SubResource( 45 )
+states/WallRight/node = SubResource( 24 )
 states/WallRight/position = Vector2( 528.015, 277.025 )
-transitions = [ "Idle", "Run", SubResource( 33 ), "Run", "Idle", SubResource( 34 ), "Idle", "Jump", SubResource( 35 ), "Jump", "Fall", SubResource( 36 ), "Fall", "Land", SubResource( 37 ), "Land", "Idle", SubResource( 38 ), "WallRight", "Fall", SubResource( 46 ), "Fall", "WallRight", SubResource( 47 ), "WallLeft", "Fall", SubResource( 48 ), "Fall", "WallLeft", SubResource( 49 ) ]
+transitions = [ "Idle", "Run", SubResource( 25 ), "Run", "Idle", SubResource( 26 ), "Idle", "Jump", SubResource( 27 ), "Jump", "Fall", SubResource( 28 ), "Fall", "Land", SubResource( 29 ), "Land", "Idle", SubResource( 30 ), "WallRight", "Fall", SubResource( 31 ), "Fall", "WallRight", SubResource( 32 ), "WallLeft", "Fall", SubResource( 33 ), "Fall", "WallLeft", SubResource( 34 ) ]
 start_node = "Idle"
 graph_offset = Vector2( 27.0151, 113.025 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=27]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=36]
 
-[sub_resource type="Animation" id=52]
+[sub_resource type="Animation" id=37]
 resource_name = "Start"
 length = 0.2
 loop = true
@@ -411,7 +402,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=53]
+[sub_resource type="Animation" id=38]
 resource_name = "Stop"
 length = 0.1
 tracks/0/type = "value"
@@ -433,7 +424,7 @@ collision_mask = 261
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-material = SubResource( 51 )
+material = SubResource( 2 )
 position = Vector2( 0, 19 )
 scale = Vector2( 5, 5 )
 texture = ExtResource( 1 )
@@ -443,7 +434,7 @@ vframes = 16
 frame = 22
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -466,7 +457,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor/CursorArea"]
 scale = Vector2( 0.1, 0.1 )
-shape = SubResource( 2 )
+shape = SubResource( 4 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]
 
@@ -476,39 +467,39 @@ collision_layer = 16
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WebshotRadius"]
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="CancelGrapple" type="Area2D" parent="."]
 visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CancelGrapple"]
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="WebAnimation" parent="." instance=ExtResource( 3 )]
 position = Vector2( 0, -3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Fall = SubResource( 5 )
-anims/FallRight = SubResource( 6 )
-anims/Idle = SubResource( 7 )
-anims/IdleRight = SubResource( 8 )
-anims/Jump = SubResource( 9 )
-anims/JumpRight = SubResource( 10 )
-anims/Land = SubResource( 11 )
-anims/Run = SubResource( 12 )
-anims/RunRight = SubResource( 13 )
-anims/WallLeft = SubResource( 39 )
-anims/WallRight = SubResource( 43 )
+anims/Fall = SubResource( 7 )
+anims/FallRight = SubResource( 8 )
+anims/Idle = SubResource( 9 )
+anims/IdleRight = SubResource( 10 )
+anims/Jump = SubResource( 11 )
+anims/JumpRight = SubResource( 12 )
+anims/Land = SubResource( 13 )
+anims/Run = SubResource( 14 )
+anims/RunRight = SubResource( 15 )
+anims/WallLeft = SubResource( 16 )
+anims/WallRight = SubResource( 17 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 26 )
+tree_root = SubResource( 35 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 27 )
+parameters/playback = SubResource( 36 )
 
 [node name="BlinkPlayer" type="AnimationPlayer" parent="."]
-anims/Start = SubResource( 52 )
-anims/Stop = SubResource( 53 )
+anims/Start = SubResource( 37 )
+anims/Stop = SubResource( 38 )
 
 [connection signal="shoot_web" from="." to="WebAnimation" method="_on_Player_shoot_web"]
 [connection signal="area_entered" from="Cursor/CursorArea" to="." method="_on_CursorArea_area_entered"]
