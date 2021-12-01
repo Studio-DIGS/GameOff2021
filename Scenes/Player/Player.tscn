@@ -1,13 +1,17 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Images/Spider Sprite Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Player/WebAnimation.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Player/Hurtbox.gd" type="Script" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30.707, 18.9043 )
 
 [sub_resource type="CircleShape2D" id=2]
+
+[sub_resource type="CircleShape2D" id=50]
+radius = 21.4073
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 710.048
@@ -392,6 +396,7 @@ frame = 22
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+current = true
 
 [node name="Raycasts" type="Node2D" parent="."]
 
@@ -412,6 +417,14 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cursor/CursorArea"]
 scale = Vector2( 0.1, 0.1 )
 shape = SubResource( 2 )
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource( 50 )
 
 [node name="WebshotRadius" type="Area2D" parent="."]
 visible = false
@@ -452,4 +465,5 @@ parameters/playback = SubResource( 27 )
 [connection signal="shoot_web" from="." to="WebAnimation" method="_on_Player_shoot_web"]
 [connection signal="area_entered" from="Cursor/CursorArea" to="." method="_on_CursorArea_area_entered"]
 [connection signal="area_exited" from="Cursor/CursorArea" to="." method="_on_CursorArea_area_exited"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="body_entered" from="CancelGrapple" to="." method="_on_CancelGrapple_body_entered"]

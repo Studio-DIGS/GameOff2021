@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Levels/GreenTile.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Scenes/Effects/DeathScreen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Effects/DeathScreen.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Effects/OneWay.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/UI.tscn" type="PackedScene" id=10]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 6 )
@@ -50,6 +51,7 @@ position = Vector2( 110.668, -119.232 )
 
 [node name="MovingCamera" parent="." instance=ExtResource( 5 )]
 position = Vector2( -2048, 640 )
+current = false
 zoom = Vector2( 1.25, 1.25 )
 
 [node name="TriggerZone" parent="MovingCamera" index="0"]
@@ -65,7 +67,15 @@ position = Vector2( 956, -198 )
 position = Vector2( 1260, -324 )
 
 [node name="OneWay" parent="." instance=ExtResource( 9 )]
-position = Vector2( -2240.68, 409.112 )
+position = Vector2( -2647.17, 384.347 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource( 10 )]
+margin_left = 5.10803
+margin_top = 3.83102
+margin_right = 5.10803
+margin_bottom = 3.83105
 
 [connection signal="timeout" from="MovingCamera/Timer" to="." method="_on_Timer_timeout"]
 

@@ -19,6 +19,7 @@ script = ExtResource( 3 )
 __meta__ = {
 "_edit_group_": true
 }
+SPEED = 0.03
 
 [node name="PointBody" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )

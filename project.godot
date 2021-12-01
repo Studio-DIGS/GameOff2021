@@ -14,6 +14,10 @@ config/name="GameOff2021"
 run/main_scene="res://Scenes/Levels/World.tscn"
 config/icon="res://Images/icon.png"
 
+[autoload]
+
+Stats="*res://Scenes/Stats.tscn"
+
 [display]
 
 window/size/width=1600

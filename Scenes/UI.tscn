@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Images/heart2.png" type="Texture" id=1]
+[ext_resource path="res://Images/heart1.png" type="Texture" id=2]
+[ext_resource path="res://Images/heart3.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/UI.gd" type="Script" id=4]
+
+[node name="UI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeartEmpty" type="TextureRect" parent="."]
+margin_right = 168.0
+margin_bottom = 48.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeartHalf" type="TextureRect" parent="."]
+margin_right = 168.0
+margin_bottom = 48.0
+texture = ExtResource( 1 )
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeartFull" type="TextureRect" parent="."]
+margin_right = 168.0
+margin_bottom = 48.0
+texture = ExtResource( 2 )
+expand = true
+stretch_mode = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}

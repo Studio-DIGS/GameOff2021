@@ -203,3 +203,8 @@ func _on_CancelGrapple_body_entered(body):
 	if state == GRAPPLE:
 		web.tip = Vector2.ZERO
 		state = MOVE
+
+
+func _on_Hurtbox_area_entered(area):
+	pass
+	#Stats.health -= area.damage
