@@ -1,3 +1,8 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Images/game_over_PNG57.png" type="Texture" id=1]
 
 [node name="DeathScreen" type="Camera2D"]
+
+[node name="game_over_PNG57" type="Sprite" parent="."]
+texture = ExtResource( 1 )
