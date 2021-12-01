@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Images/Spider Sprite Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Player/Player.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://SoundEffects/sfx_movement_jump8.wav" type="AudioStream" id=5]
 [ext_resource path="res://SoundEffects/sfx_movement_footstepsloop4_fast.wav" type="AudioStream" id=6]
 [ext_resource path="res://SoundEffects/sfx_movement_jump9_landing.wav" type="AudioStream" id=7]
+[ext_resource path="res://SoundEffects/sfx_sounds_damage3.wav" type="AudioStream" id=8]
+[ext_resource path="res://SoundEffects/sfx_sounds_interaction5.wav" type="AudioStream" id=9]
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -157,7 +159,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 tracks/3/type = "audio"
-tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/path = NodePath("Audio/AudioStreamPlayer2D")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -210,7 +212,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 tracks/3/type = "audio"
-tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/path = NodePath("Audio/AudioStreamPlayer2D")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -264,7 +266,7 @@ tracks/2/keys = {
 "values": [ 0.0 ]
 }
 tracks/3/type = "audio"
-tracks/3/path = NodePath("AudioStreamPlayer2D")
+tracks/3/path = NodePath("Audio/AudioStreamPlayer2D")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -538,8 +540,17 @@ parameters/playback = SubResource( 35 )
 anims/Start = SubResource( 36 )
 anims/Stop = SubResource( 37 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Audio" type="YSort" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
 stream = ExtResource( 5 )
+
+[node name="WebShootSound" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource( 9 )
+volume_db = -16.58
+
+[node name="PlayerHurtSound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource( 8 )
 
 [connection signal="shoot_web" from="." to="WebAnimation" method="_on_Player_shoot_web"]
 [connection signal="area_entered" from="Cursor/CursorArea" to="." method="_on_CursorArea_area_entered"]

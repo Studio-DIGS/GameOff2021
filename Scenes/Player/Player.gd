@@ -145,8 +145,9 @@ func shoot():
 	emit_signal("shoot_web")
 	web.visible = true
 	
-	var web_audio = webShootSound.instance()
-	get_tree().current_scene.add_child(web_audio)
+#	var web_audio = webShootSound.instance()
+#	get_tree().current_scene.add_child(web_audio)
+	$Audio/WebShootSound.play()
 	
 	web.freq = 0.2
 	active_shot = true
@@ -211,8 +212,9 @@ func _on_CancelGrapple_body_entered(body):
 
 
 func _on_Hurtbox_area_entered(area):
-	var damage_audio = playerHurtSound.instance()
-	get_tree().current_scene.add_child(damage_audio)
+#	var damage_audio = playerHurtSound.instance()
+#	get_tree().current_scene.add_child(damage_audio)
+	$Audio/PlayerHurtSound.play()
 	velocity = Vector2(clamp(velocity.x, -KNOCKBACK, KNOCKBACK) * -1, -KNOCKBACK)
 	Stats.health -= area.damage
 	hurtbox.start_invincibility(0.9)
