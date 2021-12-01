@@ -37,6 +37,7 @@ func _on_Timer_timeout():
 
 
 func _on_StartGameZone_area_entered(area):
-	make_current()
-	timer.start(3072 / initial_cam_speed)
+	if !game_is_playing: 
+		make_current()
+		timer.start(3072 / initial_cam_speed)
 	game_is_playing = true

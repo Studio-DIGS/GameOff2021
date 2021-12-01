@@ -17,6 +17,9 @@ tile_data = PoolIntArray( -3145728, 81, 0, -3145727, 71, 0, -3145726, 107, 0, -3
 [node name="Grapple Point" parent="Grapples" instance=ExtResource( 1 )]
 position = Vector2( 384, -320 )
 
+[node name="Grapple Point11" parent="Grapples" instance=ExtResource( 1 )]
+position = Vector2( 192, -832 )
+
 [node name="Grapple Point2" parent="Grapples" instance=ExtResource( 1 )]
 position = Vector2( 1088, -2240 )
 
@@ -70,10 +73,26 @@ position = Vector2( 256, -448 )
 [node name="OneWay2" parent="OneWayPlatforms" instance=ExtResource( 3 )]
 position = Vector2( 576, -1536 )
 
+[node name="OneWay4" parent="OneWayPlatforms" instance=ExtResource( 3 )]
+position = Vector2( 832, -2368 )
+rotation = -1.5708
+
 [node name="OneWay3" parent="OneWayPlatforms" instance=ExtResource( 3 )]
 position = Vector2( 320, -3072 )
 
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="EnemyType1" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 1837.26, -1121.26 )
+position = Vector2( 1792, -704 )
+
+[node name="EnemyType5" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 704, -1024 )
+
+[node name="EnemyType2" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 1152, -2688 )
+
+[node name="EnemyType3" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 640, -2688 )
+
+[node name="EnemyType4" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 896, -2944 )

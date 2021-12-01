@@ -5,16 +5,21 @@ extends Node2D
 #Arrays of each pool of levels, separated by difficulty
 onready var EasyPool = [
 	preload("res://Scenes/Levels/Easy/Easy1.tscn"),
-	preload("res://Scenes/Levels/Easy/Easy2.tscn")
+	preload("res://Scenes/Levels/Easy/Easy2.tscn"),
+	preload("res://Scenes/Levels/Easy/Easy3.tscn"),
+	preload("res://Scenes/Levels/Easy/Easy4.tscn")
 ]
 onready var MediumPool = [
 	preload("res://Scenes/Levels/Medium/Medium1.tscn"),
 	preload("res://Scenes/Levels/Medium/Medium2.tscn"),
-	preload("res://Scenes/Levels/Medium/Medium3.tscn")
+	preload("res://Scenes/Levels/Medium/Medium3.tscn"),
+	preload("res://Scenes/Levels/Medium/Medium4.tscn")
 ]
 onready var HardPool = [
 	preload("res://Scenes/Levels/Hard/Hard1.tscn"),
-	preload("res://Scenes/Levels/Hard/Hard2.tscn")
+	preload("res://Scenes/Levels/Hard/Hard2.tscn"),
+	preload("res://Scenes/Levels/Hard/Hard3.tscn"),
+	preload("res://Scenes/Levels/Hard/Hard4.tscn")
 ]
 onready var doorClose = preload("res://Scenes/Levels/DoorClose.tscn")
 
@@ -33,9 +38,10 @@ export var final_spawn_wait_time_sec = 7.50
 var initial_spawn_wait_time_sec = spawn_wait_time_sec
 var weight = 0.0
 
-#Variables to be used in _process
+#Variables to be used in start of game
 var rotator = 0
 var changing_position = Vector2(2048, -192)
+var is_game_playing = false
 onready var cur_pool = EasyPool
 onready var spawnTimer = $SpawnTimer
 onready var score_view = $Interfaces/UI/Label
@@ -85,11 +91,13 @@ func generate_module(instance_to_add, pool):
 	return instance_to_add
 
 func _on_StartGameZone_area_entered(area):
-	spawnTimer.start(initial_spawn_wait_time_sec)
-	var door_close = doorClose.instance()
-	call_deferred("add_child", door_close)
-	door_close.position = Vector2(2048, 512)
-	hi_score = 0
+	if !is_game_playing:
+		spawnTimer.start(initial_spawn_wait_time_sec)
+		var door_close = doorClose.instance()
+		call_deferred("add_child", door_close)
+		door_close.position = Vector2(2048, 512)
+		hi_score = 0
+		is_game_playing = true
 
 func _on_SpawnTimer_timeout():
 	if cur_module >= amt_to_medium_pool:
