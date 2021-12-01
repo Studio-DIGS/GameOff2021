@@ -5,7 +5,7 @@
 [ext_resource path="res://Scenes/Effects/Grapple Point.gd" type="Script" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 14.9463
+radius = 8.77123
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -33,6 +33,7 @@ scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 2 )
 
 [node name="GrappleArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 0
 

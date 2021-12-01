@@ -38,7 +38,6 @@ func _draw():
 		pos2 = Vector2(i+1, sine(i+1))
 		draw_line(pos, pos2, ColorN("white"), width)
 		if pos2.x > tip.x:
-			print(str(i) + " " + str(width))
 			draw_circle(pos2, width, ColorN("white"))
 			break
 		
