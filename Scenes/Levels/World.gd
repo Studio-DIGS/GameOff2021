@@ -34,7 +34,7 @@ var weight = 0.0
 
 #Variables to be used in _process
 var rotator = 0
-var changing_position = Vector2(-3072, 0)
+var changing_position = Vector2(2048, 0)
 onready var cur_pool = EasyPool
 
 #variables for level generation
@@ -49,7 +49,6 @@ func _ready():
 	instanceOne = random_choice(EasyPool).instance()
 	instanceTwo = random_choice(EasyPool).instance()
 	instanceThree = random_choice(EasyPool).instance()
-	generate_module(instanceOne, EasyPool)
 
 #Given an array, returns a value at a random valid index
 func random_choice(list: Array):
@@ -91,3 +90,6 @@ func _on_Timer_timeout():
 	if weight < 1:
 		weight += 0.1
 	spawn_wait_time_ms = lerp(initial_spawn_wait_time_ms, final_spawn_wait_time_ms, weight)
+
+func _on_StartGameZone_area_entered(area):
+	generate_module(instanceOne, EasyPool)

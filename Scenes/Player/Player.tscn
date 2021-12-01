@@ -393,21 +393,21 @@ animation = "WallRight"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=26]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=35]
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=36]
+[sub_resource type="AnimationNodeStateMachineTransition" id=28]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=37]
+[sub_resource type="AnimationNodeStateMachineTransition" id=29]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=38]
+[sub_resource type="AnimationNodeStateMachineTransition" id=30]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=39]
+[sub_resource type="AnimationNodeStateMachineTransition" id=31]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=40]
+[sub_resource type="AnimationNodeStateMachineTransition" id=32]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id=41]
+[sub_resource type="AnimationNodeStateMachineTransition" id=33]
 
-[sub_resource type="AnimationNodeStateMachine" id=31]
+[sub_resource type="AnimationNodeStateMachine" id=34]
 states/Fall/node = SubResource( 14 )
 states/Fall/position = Vector2( 413.318, 163.547 )
 states/Idle/node = SubResource( 15 )
@@ -422,14 +422,13 @@ states/WallLeft/node = SubResource( 19 )
 states/WallLeft/position = Vector2( 614.193, 319.525 )
 states/WallRight/node = SubResource( 20 )
 states/WallRight/position = Vector2( 357.292, 332.775 )
-transitions = [ "Idle", "Run", SubResource( 21 ), "Run", "Idle", SubResource( 22 ), "Idle", "Jump", SubResource( 23 ), "Jump", "Fall", SubResource( 24 ), "Fall", "Land", SubResource( 25 ), "Land", "Idle", SubResource( 26 ), "Idle", "Fall", SubResource( 35 ), "Fall", "WallLeft", SubResource( 36 ), "Fall", "WallRight", SubResource( 37 ), "WallRight", "Jump", SubResource( 38 ), "WallLeft", "Jump", SubResource( 39 ), "WallLeft", "Fall", SubResource( 40 ), "WallRight", "Fall", SubResource( 41 ) ]
+transitions = [ "Idle", "Run", SubResource( 21 ), "Run", "Idle", SubResource( 22 ), "Idle", "Jump", SubResource( 23 ), "Jump", "Fall", SubResource( 24 ), "Fall", "Land", SubResource( 25 ), "Land", "Idle", SubResource( 26 ), "Idle", "Fall", SubResource( 27 ), "Fall", "WallLeft", SubResource( 28 ), "Fall", "WallRight", SubResource( 29 ), "WallRight", "Jump", SubResource( 30 ), "WallLeft", "Jump", SubResource( 31 ), "WallLeft", "Fall", SubResource( 32 ), "WallRight", "Fall", SubResource( 33 ) ]
 start_node = "Idle"
 graph_offset = Vector2( -90.9849, -2.975 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=32]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=35]
 
-[sub_resource type="Animation" id=33]
-resource_name = "Start"
+[sub_resource type="Animation" id=36]
 length = 0.2
 loop = true
 tracks/0/type = "value"
@@ -445,8 +444,7 @@ tracks/0/keys = {
 "values": [ true, false ]
 }
 
-[sub_resource type="Animation" id=34]
-resource_name = "Stop"
+[sub_resource type="Animation" id=37]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:material:shader_param/active")
@@ -479,6 +477,8 @@ frame = 18
 shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 2, 2 )
 
 [node name="Raycasts" type="Node2D" parent="."]
 
@@ -530,13 +530,13 @@ anims/WallLeft = SubResource( 12 )
 anims/WallRight = SubResource( 13 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 31 )
+tree_root = SubResource( 34 )
 anim_player = NodePath("../AnimationPlayer")
-parameters/playback = SubResource( 32 )
+parameters/playback = SubResource( 35 )
 
 [node name="BlinkPlayer" type="AnimationPlayer" parent="."]
-anims/Start = SubResource( 33 )
-anims/Stop = SubResource( 34 )
+anims/Start = SubResource( 36 )
+anims/Stop = SubResource( 37 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
