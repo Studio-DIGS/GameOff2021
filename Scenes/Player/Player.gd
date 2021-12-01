@@ -64,7 +64,6 @@ func _physics_process(delta):
 		else:
 			active_shot = false
 			web.visible = false
-			print("this is repeaig")
 			web.tip = Vector2.ZERO
 	
 	match state:
