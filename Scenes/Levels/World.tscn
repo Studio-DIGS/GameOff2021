@@ -55,6 +55,12 @@ zoom = Vector2( 1.25, 1.25 )
 [node name="Timer" parent="MovingCamera" index="1"]
 autostart = true
 
+[node name="EnemyType2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 956, -198 )
+
+[node name="EnemyType3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1260, -324 )
+
 [connection signal="timeout" from="MovingCamera/Timer" to="." method="_on_Timer_timeout"]
 
 [editable path="MovingCamera"]

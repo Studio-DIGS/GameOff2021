@@ -1,10 +1,10 @@
 extends KinematicBody2D
 
-var SPEED = 500
+var SPEED = 400
 var velocity = Vector2.ZERO
-var FRICTION = 20
-var ACCELERATION = 250
-var BOUNCE = -20
+var FRICTION = 400
+var ACCELERATION = 300
+var BOUNCE = -50
 
 enum{
 	IDLE,
