@@ -29,6 +29,7 @@ onready var hurtbox = $Hurtbox
 onready var web = $WebAnimation
 onready var animationState = $AnimationTree.get("parameters/playback")
 const playerHurtSound = preload("res://Scenes/Player/PlayerHurtSound.tscn")
+const webShootSound = preload("res://Scenes/Player/Web/ShootWebSound.tscn")
 
 enum {
 	MOVE,
@@ -143,6 +144,9 @@ func jump():
 func shoot():
 	emit_signal("shoot_web")
 	web.visible = true
+	
+	var web_audio = webShootSound.instance()
+	get_tree().current_scene.add_child(web_audio)
 	
 	web.freq = 0.2
 	active_shot = true
