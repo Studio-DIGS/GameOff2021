@@ -4,9 +4,8 @@ extends Node2D
 
 #Arrays of each pool of levels, separated by difficulty
 onready var EasyPool = [
-#	preload("res://Scenes/World.tscn")
 	preload("res://Scenes/Levels/Easy/Easy1.tscn"),
-#	preload("res://Scenes/Levels/Easy/Easy2.tscn")
+	preload("res://Scenes/Levels/Easy/Easy2.tscn")
 ]
 onready var MediumPool = [
 	preload("res://Scenes/Levels/Medium/Medium1.tscn"),
