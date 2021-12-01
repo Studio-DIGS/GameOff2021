@@ -45,6 +45,8 @@ var active_shot = false
 var webshot = preload("res://Scenes/Player/Webshot.tscn")
 signal shoot_web()
 
+func _ready():
+	$AnimationTree.active = true
 
 
 func _physics_process(delta):
@@ -61,6 +63,8 @@ func _physics_process(delta):
 				webshot_instance.queue_free()
 		else:
 			active_shot = false
+			web.visible = false
+			print("this is repeaig")
 			web.tip = Vector2.ZERO
 	
 	match state:
@@ -100,6 +104,10 @@ func move(delta):
 			jump()
 			
 	elif walled != 0:
+		if walled > 0:
+			animationState.travel("WallRight")
+		elif walled < 0:
+			animationState.travel("WallLeft")
 		velocity.y *= 0.8
 		if Input.is_action_just_pressed("jump"):
 			velocity.x = walled * SPEED * -1.5
@@ -132,6 +140,7 @@ func jump():
 
 func shoot():
 	emit_signal("shoot_web")
+	web.visible = true
 	
 	web.freq = 0.2
 	active_shot = true
@@ -150,9 +159,11 @@ func grapple():
 	if trajectory.length() < 40:
 		velocity = SPEED * 2 * trajectory.normalized()
 		web.tip = Vector2.ZERO
+		web.visible = false
 		state = MOVE
 	if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed("shoot_web"):
 		web.tip = Vector2.ZERO
+		web.visible = true
 		state = MOVE
 		
 

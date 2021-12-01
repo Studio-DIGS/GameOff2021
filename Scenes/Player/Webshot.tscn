@@ -3,8 +3,10 @@
 [ext_resource path="res://Scenes/Player/Webshot.gd" type="Script" id=1]
 
 [sub_resource type="CircleShape2D" id=1]
+radius = 8.79672
 
 [sub_resource type="CircleShape2D" id=2]
+radius = 8.7851
 
 [node name="Webshot" type="RigidBody2D"]
 collision_layer = 0

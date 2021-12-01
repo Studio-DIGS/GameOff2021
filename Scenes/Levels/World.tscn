@@ -49,7 +49,6 @@ position = Vector2( 110.668, -119.232 )
 
 [node name="MovingCamera" parent="." instance=ExtResource( 5 )]
 position = Vector2( -2048, 640 )
-current = false
 zoom = Vector2( 1.25, 1.25 )
 
 [node name="Timer" parent="MovingCamera" index="1"]
