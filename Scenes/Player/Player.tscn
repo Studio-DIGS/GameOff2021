@@ -480,7 +480,7 @@ shape = SubResource( 3 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 2, 2 )
+zoom = Vector2( 1.25, 1.25 )
 
 [node name="Raycasts" type="Node2D" parent="."]
 

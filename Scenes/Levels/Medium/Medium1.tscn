@@ -73,20 +73,7 @@ position = Vector2( 576, -1536 )
 [node name="OneWay3" parent="OneWayPlatforms" instance=ExtResource( 3 )]
 position = Vector2( 320, -3072 )
 
-[node name="EnemyType1" parent="." instance=ExtResource( 4 )]
-position = Vector2( 260.042, -412.83 )
+[node name="Enemies" type="Node2D" parent="."]
 
-[node name="EnemyType2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1357.47, -220.497 )
-
-[node name="EnemyType3" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1334.84, -1006.8 )
-
-[node name="EnemyType4" parent="." instance=ExtResource( 4 )]
-position = Vector2( 514.6, -1776.13 )
-
-[node name="EnemyType5" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1204.74, -2347.47 )
-
-[node name="EnemyType6" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1742.14, -1759.16 )
+[node name="EnemyType1" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 1837.26, -1121.26 )

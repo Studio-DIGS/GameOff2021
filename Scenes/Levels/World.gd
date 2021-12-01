@@ -38,12 +38,15 @@ var rotator = 0
 var changing_position = Vector2(2048, -192)
 onready var cur_pool = EasyPool
 onready var spawnTimer = $SpawnTimer
+onready var score_view = $Interfaces/UI/Label
 
 #variables for level generation
 var instanceOne
 var instanceTwo
 var instanceThree
 var cur_module = 0
+
+var hi_score = -1
 
 #Randomizes seed and initializes 3 different instances
 func _ready():
@@ -52,9 +55,13 @@ func _ready():
 	instanceTwo = random_choice(EasyPool).instance()
 	instanceThree = random_choice(EasyPool).instance()
 	generate_module(instanceOne, EasyPool)
+	
+
 func _process(delta):
-	if $AudioStreamPlayer.playing == false:
-		$AudioStreamPlayer.play()
+	if hi_score >= 0:
+		hi_score += 10 * delta
+		score_view.text = str(int(hi_score))
+
 #Given an array, returns a value at a random valid index
 func random_choice(list: Array):
 	if list.empty():
@@ -82,6 +89,7 @@ func _on_StartGameZone_area_entered(area):
 	var door_close = doorClose.instance()
 	call_deferred("add_child", door_close)
 	door_close.position = Vector2(2048, 512)
+	hi_score = 0
 
 func _on_SpawnTimer_timeout():
 	if cur_module >= amt_to_medium_pool:

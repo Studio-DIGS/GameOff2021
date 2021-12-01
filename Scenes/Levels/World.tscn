@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Levels/GreenTile.tres" type="TileSet" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
@@ -7,13 +7,19 @@
 [ext_resource path="res://Scenes/Effects/MovingCamera.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Scenes/Levels/World.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/Effects/DeathScreen.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Scenes/Effects/DeathScreen.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Effects/Music.gd" type="Script" id=8]
 [ext_resource path="res://Scenes/Effects/OneWay.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Scenes/Effects/UI.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Images/bg.png" type="Texture" id=11]
 [ext_resource path="res://Scenes/Effects/Pause.gd" type="Script" id=12]
 [ext_resource path="res://Scenes/Effects/TriggerZone.tscn" type="PackedScene" id=13]
 [ext_resource path="res://SoundEffects/game music + cymbal.mp3" type="AudioStream" id=14]
+[ext_resource path="res://Images/logo.png" type="Texture" id=15]
+[ext_resource path="res://Cloude_Regular_Bold_1.02.ttf" type="DynamicFontData" id=16]
+
+[sub_resource type="DynamicFont" id=1]
+size = 150
+font_data = ExtResource( 16 )
 
 [node name="World2" type="Node2D"]
 script = ExtResource( 6 )
@@ -26,6 +32,13 @@ margin_left = 5.10803
 margin_top = 3.83102
 margin_right = 5.10803
 margin_bottom = 3.83105
+
+[node name="Label" parent="Interfaces/UI" index="3"]
+margin_left = -228.121
+margin_top = -32.2167
+margin_right = 22.8789
+margin_bottom = 118.783
+custom_fonts/font = SubResource( 1 )
 
 [node name="Pause" type="Control" parent="Interfaces"]
 pause_mode = 2
@@ -58,8 +71,7 @@ tile_data = PoolIntArray( -1572902, 26, 0, -1572901, 18, 0, -1572900, 18, 0, -15
 position = Vector2( 0, 384 )
 
 [node name="DeathScreen" parent="." instance=ExtResource( 7 )]
-position = Vector2( -1920, 256 )
-script = ExtResource( 8 )
+position = Vector2( -3612.49, 1290.54 )
 
 [node name="MovingCamera" parent="." instance=ExtResource( 5 )]
 position = Vector2( 3072, 576 )
@@ -174,19 +186,27 @@ position = Vector2( -64, -1024 )
 position = Vector2( -384, -832 )
 
 [node name="EnemyType3" parent="Enemies" instance=ExtResource( 4 )]
-position = Vector2( 192, -832 )
+position = Vector2( 222.3, -819.014 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
+autoplay = true
+script = ExtResource( 8 )
 
 [node name="StartGameZone" parent="." instance=ExtResource( 13 )]
 position = Vector2( 2176, 512 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 
+[node name="logo" type="Sprite" parent="."]
+position = Vector2( 961.388, -55.9081 )
+scale = Vector2( 8.17486, 8.17486 )
+texture = ExtResource( 15 )
+
 [connection signal="area_entered" from="MovingCamera/TriggerZone" to="DeathScreen" method="_on_TriggerZone_area_entered"]
-[connection signal="area_entered" from="StartGameZone" to="MovingCamera" method="_on_StartGameZone_area_entered"]
 [connection signal="area_entered" from="StartGameZone" to="." method="_on_StartGameZone_area_entered"]
+[connection signal="area_entered" from="StartGameZone" to="MovingCamera" method="_on_StartGameZone_area_entered"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 
+[editable path="Interfaces/UI"]
 [editable path="MovingCamera"]
